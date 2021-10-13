@@ -4,11 +4,48 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="resources/style.css">
+  <script src="resources/Settings.js"></script>
   <title>Jumble</title>
 </head>
 
 <body>
+
+  <div id="overlay">
+    <h1 class="title2">SETTINGS</h1>
+    <div class="info">
+    <!--FName-->
+    <label class="field" for="fName">First name:</label>
+    <div class="value"><input type="text" id="fName" placeholder="John"></div>
+    <!--LName-->
+    <label class="field" for="lName">Last name:</label>
+    <div class="value"><input type="text" id="lName" placeholder="Smith"></div>
+    <!--Email-->
+    <label class="field" for="email">Email:</label>
+    <div class="value"><input type="text" id="email" placeholder="Enter Email"></div>
+    <!--Password-->
+    <label class="field" for="password">Password:</label>
+    <div class="value"><input type="text" id="password" placeholder="Enter Password"></div>
+    <!--Background/Theme-->
+    <button class="btn">THEMES</button>
+    <div class="dropdown">
+      <button class="btn" style="border-left:1px solid navy">
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="#">Theme 1</a>
+        <a href="#">Theme 2</a>
+        <a href="#">Theme 3</a>
+      </div>
+    </div>
+  </div>
+     <!--Update-->
+    <button class="update" >Update</button>
+    <!--Exit/return to home-->
+    <button class="return" onclick="off()">Return</button>
+   </div>
+  
   <div id="homepageBody">
     <!-- Title -->
     <div id="topDivHomepage">
@@ -19,7 +56,7 @@
     <a href="https://webdev-fall2021-tbd.github.io/"><img src="resources/images/aboutUs.png" alt="About Us" id="aboutUsImg"></a>
     
     <!-- Settings image link, not sure how exactly this is going to be coded but this is temporary -->
-    <a href=""><img src="resources/images/profile.png" alt="Settings" id="settingsLink"></a>
+    <a onclick="Settings()"><img src="resources/images/profile.png" alt="Settings" id="settingsLink"></a>
 
     <!-- This is where the icon stuff will go -->
     <div id="iconArea"></div>
@@ -27,3 +64,4 @@
 
   </div>
 </body>
+
