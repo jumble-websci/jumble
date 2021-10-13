@@ -1,0 +1,74 @@
+/* Fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Birthstone&family=Noto+Sans+Display:ital@0;1&display=swap');
+body {
+  font-family: 'Noto Sans Display', sans-serif;
+  margin: 0;
+}
+
+
+/* For basic homepage stuff */
+
+#homepageBody {
+  background-color: #FA8BFF;
+  background-image: linear-gradient(234deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.title {
+  font-family: 'Birthstone', cursive;
+  text-align: center;
+  color: white;
+  font-size: 15vh;
+  height: 15vh;
+  position: relative;
+  top: -4.5vh;
+  margin: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+/* might not need */
+#topDivHomepage {
+  width: 100vw;
+  height: 12.5vh;
+  text-align: center;
+}
+
+/* Area where all the icons are */
+#iconArea {
+  background-color: rgba(0, 0, 0, 0.3);
+  margin: auto;
+  margin-bottom: 10vh;
+  width: 90vw;
+  /* Note that this height is temporary while we don't have the code for the icons */
+  height: 70vh;
+}
+
+#aboutUsImg {
+  position: fixed;
+  bottom: 14vh;
+  width: 10vh;
+}
+
+#settingsLink {
+  position: absolute;
+  top: 2vh;
+  width: 5vw;
+  right: 1vw;
+}
+
+#bottomBar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 13vh;
+  background: rgb(37,0,83);
+  background: linear-gradient(90deg, rgba(37,0,83,1) 0%, rgba(121,9,85,1) 45%, rgba(255,0,155,1) 100%); 
+  border-top: 2px solid black;
+}
