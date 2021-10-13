@@ -42,6 +42,8 @@ body {
 
 /* Area where all the icons are */
 #iconArea {
+  box-sizing:border-box;
+  padding:10px;
   background-color: rgba(0, 0, 0, 0.3);
   margin: auto;
   margin-bottom: 10vh;
@@ -71,4 +73,44 @@ body {
   background: rgb(37,0,83);
   background: linear-gradient(90deg, rgba(37,0,83,1) 0%, rgba(121,9,85,1) 45%, rgba(255,0,155,1) 100%); 
   border-top: 2px solid black;
+}
+
+
+/* drag and drop */
+  
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 250px);
+  gap: 10%;
+}
+
+.box {
+  border: 2px solid #666;
+  /* background-color: #ddd; */
+  border-radius: 1em;
+  padding: 10px;
+  width:10vw;
+  height:10vw;
+  cursor: move;
+}
+
+.box.over {
+  border: 2px dotted #666;
+}
+
+[draggable] {
+  user-select: none;
+}
+
+.none {
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 10px;
+  width:10vw;
+  height:10vw;
+}
+
+.icon {
+  width:75%;
+  height:75%;
 }
