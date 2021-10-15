@@ -103,7 +103,10 @@ body {
   cursor:move;
   padding:10px;
   margin: 1vw;
-
+  display:flex;
+  justify-content:center;
+  align-items :center;
+  
 }
 
 [draggable] {
@@ -114,7 +117,7 @@ body {
   max-width:100%;
   max-height:100%;
   z-index:-1;
-  
+
 }
 
 .ico {
