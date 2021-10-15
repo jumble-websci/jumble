@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     var dragSrcEl = null;
     
     function handleDragStart(e) {
-      // this.style.opacity = '0.4';
       
       dragSrcEl = this;
   
@@ -36,14 +35,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
       
       return false;
     }
-  
-    function handleDragEnd(e) {
-      // this.style.opacity = '1';
-      
-      items.forEach(function (item) {
-        item.classList.remove('over');
-      });
-    }
     
     
     let items = document.querySelectorAll('.container .box');
@@ -51,6 +42,5 @@ document.addEventListener('DOMContentLoaded', (event) => {
       item.addEventListener('dragstart', handleDragStart, false);
       item.addEventListener('dragover', handleDragOver, false);
       item.addEventListener('drop', handleDrop, false);
-      item.addEventListener('dragend', handleDragEnd, false);
     });
   });
