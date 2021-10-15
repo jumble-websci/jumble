@@ -52,7 +52,10 @@ body {
   height: 70vh; 
   position:absolute;
   overflow-y:scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
+
 
 /* Hide scrollbar (for most browsers) */
 #iconArea::-webkit-scrollbar {
