@@ -80,7 +80,7 @@ body {
   margin-top: 11vh;
   position:fixed;
   display: none;
-  width: 45%;
+  width: 40%;
   height: 80%;
   top: 0;
   left:0;
@@ -126,7 +126,7 @@ body {
 
 .update{
   position: absolute;
-  top: 115%;
+  top: 70vh;
   left: 48%;
   font-size: 30px;
   color: bisque;
