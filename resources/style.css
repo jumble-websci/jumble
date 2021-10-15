@@ -77,11 +77,11 @@ body {
 
 #overlay {
   font-family: 'Birthstone', cursive;
-  margin-left: 27%;
+  margin-left: 30%;
   margin-top: 11vh;
   position:fixed;
   display: none;
-  width: 45%;
+  width: 40%;
   height: 80%;
   top: 0;
   left:0;
@@ -106,7 +106,7 @@ body {
 .info{
   align-content: center;
   position: relative;
-  left:35vh;
+  left:32vh;
   width:20vw;
 }
 
@@ -114,7 +114,7 @@ body {
 .update{
   position: absolute;
   top: 90%;
-  left: 48%;
+  left: 51%;
   font-size: 30px;
   color: bisque;
   background-color: black;
