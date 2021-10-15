@@ -27,34 +27,30 @@
         <a onclick="changeTheme(2);">Theme 3</a>
       </div>
     </div>
-    <!--About Us-->
-    <button onClick="location.href='https://webdev-fall2021-tbd.github.io/'" class="about">
-      ABOUT
-      <i class="fa fa-info-circle"></i>
-    </button>
+
+  </div>
 
     <div class="info">
-      <!--FName-->
-      <label class="field" for="fName">First Name</label>
-      <div class="value"><input type="text" id="fName" placeholder="Enter First Name"></div>
-      <!--LName-->
-      <label class="field" for="lName">Last Name</label>
-      <div class="value"><input type="text" id="lName" placeholder="Enter Last Name"></div>
-      <!--Email-->
-      <label class="field" for="email">Email</label>
-      <div class="value"><input type="text" id="email" placeholder="Enter Email"></div>
-      <!--Password-->
-      <label class="field" for="password">Password</label>
-      <div class="value"><input type="text" id="password" placeholder="Enter Password"></div>
-      <!--Update-->
-      <button class="update"><i class="fa fa-check">UPDATE</i></button>
-      <!--Exit/return to home-->
-      <button class="return" onclick="off()">Exit<i class="fa fa-compress"></i></button>
+    <!--FName-->
+    <label class="field" for="fName">First Name</label>
+    <div class="value"><input type="text" id="fName" placeholder="Enter First Name"></div>
+    <!--LName-->
+    <label class="field" for="lName">Last Name</label>
+    <div class="value"><input type="text" id="lName" placeholder="Enter Last Name"></div>
+    <!--Email-->
+    <label class="field" for="email">Email</label>
+    <div class="value"><input type="text" id="email" placeholder="Enter Email"></div>
+    <!--Password-->
+    <label class="field" for="password">Password</label>
+    <div class="value"><input type="text" id="password" placeholder="Enter Password"></div>
     </div>
+     <!--Update-->
+     <button class="update"><i class ="fa fa-check">UPDATE</i></button>
+
   </div>
   <div id="homepageBody">
     <!-- Title -->
-    <div id="topDivHomepage">
+    <div id="topDivHomepage" onclick="off()">
       <h1 class="title">Jumble</h1>
     </div>
 
@@ -65,9 +61,10 @@
     <!-- Settings image link, not sure how exactly this is going to be coded but this is temporary -->
     <a onclick="Settings()"><img src="resources/images/profile.png" alt="Settings" id="settingsLink"></a>
 
+
     <!-- This is where the icon stuff will go -->
-    <div id="iconArea"></div>
-    <div id="bottomBar"></div>
+    <div id="iconArea" onclick="off()"></div>
+    <div id="bottomBar" onclick="off()"></div>
 
   </div>
 </body>
