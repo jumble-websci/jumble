@@ -1,0 +1,26 @@
+{
+    "themes": [
+        {
+            "id": 1,
+            "backgroundColor": "#FA8BFF",
+            "backgroundImage": "linear-gradient(234deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%)",
+            "barColor": "#2BD2FF",
+            "barImage": "linear-gradient(90deg, #2BD2FF 7%, #FA8BFF 55%, #2BFF88 100%)"
+        },
+        {
+            "id": 2,
+            "backgroundColor": "#FFFFFF",
+            "backgroundImage": "linear-gradient(135deg, #FFFFFF 0%, #6284FF 50%, #FF0000 100%)",
+            "barColor": "#FFFFFF",
+            "barImage": "linear-gradient(270deg, #FFFFFF 0%, #FF0000 52%, #6284FF 94%)"
+        },
+        {
+            "id": 3,
+            "backgroundColor": "#8EC5FC",
+            "backgroundImage": "linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%)",
+            "barColor": "#8EC5FC",
+            "barImage": "linear-gradient(270deg, #8EC5FC 0%, #E0C3FC 100%)"
+        }
+
+    ]
+}
