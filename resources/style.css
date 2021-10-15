@@ -105,16 +105,16 @@ body {
 
 .info{
   align-content: center;
-  position: absolute;
-  top: 22%;
-  left:35vh;
+  position: relative;
+  top:-10%;
+  left:40vh;
 }
 
 .return{
   background-color:#0b7dda;
   position: absolute;
-  top: 125%;
-  left: 248%;
+  top: 121%;
+  left: 57.5%;
   font-size: 15px;
   color: black;
   transform: translate(-50%,-50%);
@@ -127,8 +127,8 @@ body {
 
 .update{
   position: absolute;
-  top: 115%;
-  left: 48%;
+  top: 114%;
+  left: 12%;
   font-size: 30px;
   color: bisque;
   background-color: black;
@@ -174,7 +174,7 @@ body {
   border: none;
   outline: none;
   display: block;
-  margin-left: 81.28vh;
+  margin-left: 88vh;
 }
 
 .about:hover{
