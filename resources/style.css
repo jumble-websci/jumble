@@ -81,7 +81,7 @@ body {
   /* background-color: #2BD2FF;
   background-image: linear-gradient(90deg, #2BD2FF 7%, #FA8BFF 55%, #2BFF88 100%); */
   z-index:3;
-  overflow-x:none;
+  overflow-x:hidden;
 }
 
 /* For basic settings page */
@@ -99,7 +99,7 @@ body {
   right: 0;
   bottom: 0;
   background-image: url("./images/settings.jpg");
-  background-repeat:none;
+  background-repeat:no-repeat;
   background-size: 20%;
   z-index: 5;
 }
