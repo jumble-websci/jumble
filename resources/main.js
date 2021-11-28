@@ -1,38 +1,76 @@
 function changeTheme(themeNum) {
-    $.getJSON("resources/themes.json", data => {
-        document.getElementById("homepageBody").style.backgroundColor = data["themes"][themeNum]["backgroundColor"];
-        document.getElementById("homepageBody").style.backgroundImage = data["themes"][themeNum]["backgroundImage"];
+  $.getJSON("resources/themes.json", data => {
+    document.getElementById("homepageBody").style.backgroundColor = data["themes"][themeNum]["backgroundColor"];
+    document.getElementById("homepageBody").style.backgroundImage = data["themes"][themeNum]["backgroundImage"];
 
-        document.getElementById("bottomBar").style.backgroundColor = data["themes"][themeNum]["barColor"];
-        document.getElementById("bottomBar").style.backgroundImage = data["themes"][themeNum]["barImage"];
-        });
+    document.getElementById("bottomBar").style.backgroundColor = data["themes"][themeNum]["barColor"];
+    document.getElementById("bottomBar").style.backgroundImage = data["themes"][themeNum]["barImage"];
+  });
 }
 
 //For Settings
 
 function Settings() {
-    document.getElementById("overlay").style.display = "block";
+  document.getElementById("overlay").style.display = "block";
 }
 
 
 function off() {
-    document.getElementById("overlay").style.display = "none";
+  document.getElementById("overlay").style.display = "none";
 }
 
 
 //Make default theme there
 if (window.location.pathname == "/index.html") {
-    changeTheme(0);
+  changeTheme(0);
+}
+
+// Database stuff
+
+function callLogin() {
+  let email = $("#email")[0].value;
+  let password = $("#password")[0].value;
+
+  if ($("#submitButton")[0].value == "Login") {
+    // Login ajax call
+    $.ajax({
+      url: "resources/php/login.php",
+      type: "GET",
+      data: { email: email, password: password },
+      success: (data) => {
+        if (data.substring(0, 5) == "Error") {
+          alert(data);
+        } else {
+          alert("Successfuly logged in!")
+        }
+        $("#submitButton").attr("value", "Logout");
+      },
+      error: () => {
+        alert("There was an error connecting to the server, please try again.");
+      }
+    });
+  } else {
+    // Logout ajax call
+    $.ajax({
+      url: "resources/php/login.php",
+      type: "POST",
+      success: () => {
+        alert("Logged out!");
+        $("#submitButton").attr("value", "Login");
+      }
+    });
+  }
+
 }
 
 
-
+// Dragging 
 document.addEventListener('DOMContentLoaded', (event) => {
 
   var dragSrcEl = null;
-  
+
   function handleDragStart(e) {
-    
+
     dragSrcEl = this;
 
     e.dataTransfer.effectAllowed = 'move';
@@ -45,7 +83,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     e.dataTransfer.dropEffect = 'move';
-    
+
     return false;
   }
 
@@ -54,18 +92,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
     if (e.stopPropagation) {
       e.stopPropagation(); // stops the browser from redirecting.
     }
-    
+
     if (dragSrcEl != this) {
       dragSrcEl.innerHTML = this.innerHTML;
       this.innerHTML = e.dataTransfer.getData('text/html');
     }
-    
+
     return false;
   }
-  
-  
+
+
   let items = document.querySelectorAll('.container .box');
-  items.forEach(function(item) {
+  items.forEach(function (item) {
     item.addEventListener('dragstart', handleDragStart, false);
     item.addEventListener('dragover', handleDragOver, false);
     item.addEventListener('drop', handleDrop, false);
