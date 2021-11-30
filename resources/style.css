@@ -110,14 +110,17 @@ body {
 .value{
  font-size: 15px;
   color:black;
+  background-color: black;
   
 }
 
 .info{
-  align-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
   position: absolute;
-  top: 22%;
-  left:35vh;
+  
 }
 
 .return{
@@ -128,7 +131,7 @@ body {
   font-size: 15px;
   color: black;
   transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
+  
 }
 
 .return:hover{
@@ -137,13 +140,13 @@ body {
 
 .update{
   position: absolute;
-  top: 70vh;
-  left: 48%;
+  top: 90%;
+  left: 50%;
   font-size: 30px;
   color: bisque;
   background-color: black;
   transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
+  
 }
 
 .update:hover{
