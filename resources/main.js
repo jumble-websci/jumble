@@ -1,3 +1,14 @@
+$(document).ready(function() {
+    change();
+    //Make default theme there
+    if (window.location.pathname == "/index.html") {
+        changeTheme(0);
+    }
+    $( ".container" ).sortable();
+    // alert("done");
+});
+
+
 function changeTheme(themeNum) {
     $.getJSON("resources/themes.json", data => {
         document.getElementById("homepageBody").style.backgroundColor = data["themes"][themeNum]["backgroundColor"];
@@ -20,15 +31,24 @@ function off() {
 }
 
 
-//Make default theme there
-if (window.location.pathname == "/index.html") {
-    changeTheme(0);
+
+function show(id) {
+    if (!$("#"+id).length) {
+    $( "<p id='"+id+"'class='group'>Test</p>" ).insertAfter( "#group"+id );
+    $("<span class='newline'></span>").insertAfter("#"+id);
+    } else {
+        $("#"+id+"+.newline").remove();
+        $("#"+id).remove();
+    }
+    
+    // $("<span></span>").insertAfter("#"+id);
+    // $( "<p class='group'>Test</p>" ).insertAfter( "#group"+id );
 }
 
-
-$( function() {
-    $( ".container" ).sortable();
-} );
+function change() {
+    $("#bottomBar").children().children().removeClass("box").addClass("box-small");
+    $("#iconArea").children().children().removeClass("box-small").addClass("box");
+}
 
 
 //

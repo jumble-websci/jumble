@@ -82,6 +82,7 @@ body {
   background-image: linear-gradient(90deg, #2BD2FF 7%, #FA8BFF 55%, #2BFF88 100%); */
   z-index:3;
   overflow-x:hidden;
+  overflow-y:hidden;
 }
 
 /* For basic settings page */
@@ -271,7 +272,21 @@ input[type=text]:focus {
   display:flex;
   justify-content:center;
   align-items :center;
-  
+}
+
+.box-small {
+  z-index:2;
+  /* display:inline-block; */
+  width: 6vw;
+  height: 6vw;
+  cursor:move;
+  padding:10px;
+  padding-top:5px;
+  margin: 1vw;
+  margin-top:0px;
+  display:flex;
+  justify-content:center;
+  align-items :center;
 }
 
 .icon {
@@ -282,4 +297,21 @@ input[type=text]:focus {
 
 .none {
   width:100%;
+}
+
+
+.group{
+  transition: 1s ease-in all;
+  width:89.5vw;
+  height:8vw;
+  /* width:100%; */
+  border: 1px red solid;
+  grid-column-start: 1;
+}
+.newline {
+  grid-column-start: 1;
+}
+
+.hide {
+  display:none;
 }
