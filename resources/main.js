@@ -45,6 +45,18 @@ function show(id) {
     // $( "<p class='group'>Test</p>" ).insertAfter( "#group"+id );
 }
 
+
+function group(id) {
+    // $("#"+id).toggle('fast');
+    // if (!$("#"+id).length) {
+    //     $("<span class='newline'></span>").insertAfter("#"+id);
+    // } else {
+    //     $("#"+id+"+.newline").remove();
+    // }
+    
+    $("."+id).toggle('fast');
+}
+
 function change() {
     $("#bottomBar").children().children().removeClass("box").addClass("box-small");
     $("#iconArea").children().children().removeClass("box-small").addClass("box");

@@ -301,7 +301,7 @@ input[type=text]:focus {
 
 
 .group{
-  transition: 1s ease-in all;
+  /* transition: 1s ease-in all; */
   width:89.5vw;
   height:8vw;
   /* width:100%; */
