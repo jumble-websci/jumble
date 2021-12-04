@@ -1,5 +1,6 @@
 let one;
 let two;
+let test1, test2;
 
 $(document).ready(function() {
     change();
@@ -13,6 +14,8 @@ $(document).ready(function() {
         collapse_groups();
         },
         stop: function (event, ui) {
+          test1 = event;
+          test2 = ui;
           var moved = ui.item,
               replaced = ui.item.prev();
           
@@ -23,26 +26,34 @@ $(document).ready(function() {
           }
           one = moved;
           two = replaced;
-          console.log(moved);
-          console.log(replaced);
-          console.log("moved ID:" + moved.attr("id") + "replaced ID:" + replaced.attr("id"));
-          console.log("moved: " + moved.attr('class') + " replaced: " + replaced.attr('class'));
+          // if (moved.attributes)
+          if (!(moved[0].attributes["id"] == undefined && replaced[0].attributes["id"] == undefined)) {
+            group_move(moved, replaced);
+          }
+          // console.log(moved);
+          // console.log(replaced);
+          // console.log("moved ID:" + moved.attr("id") + "replaced ID:" + replaced.attr("id"));
+          // console.log("moved: " + moved.attr('class') + " replaced: " + replaced.attr('class'));
           /* alert("moved ID:" + moved.attr("id"), "replaced ID:" + replaced.attr("id")) */;
-      },
-      update: function( event, ui ) {
-        test(event, ui)
       }
     });
 });
 
 
-
 // TODO: make groups follow where the item has been dragged
-function test (event, ui) {
-  // test1 = event;
-  // test2 = ui;
-  
-  // find the old group
+function group_move (moved, replaced) {
+  if (moved[0].attributes["id"]!= undefined) {
+    // make the stuff follow the moved element
+    // moved has swapped places with replaced, so since moved is a group we want to take the stuff after replaced and place it after moved
+    $("."+moved[0].attributes["id"].value).insertAfter($('#'+moved[0].attributes["id"].value))
+    console.log(moved[0].attributes["id"].value)
+    // console.log("something")
+  }
+  if (replaced[0].attributes["id"] != undefined) {
+    // make the stuff follow the replaced element
+    $("."+replaced[0].attributes["id"].value).insertAfter($('#'+replaced[0].attributes["id"].value))
+  }
+  // find the old group 
   // let old_group = $(".group"+)
   // make sure that it is collapsed
   collapse_groups();
