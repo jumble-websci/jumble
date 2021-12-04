@@ -1,12 +1,16 @@
+let test1;
+let test2;
+
 $(document).ready(function() {
     change();
     //Make default theme there
     if (window.location.pathname == "/index.html") {
         changeTheme(0);
     }
-    $( ".container" ).sortable({
+    $( ".sort" ).sortable({
       start: function(event, ui){
         ui.item.addClass('noclick');
+        collapse_groups();
         },
       update: function( event, ui ) {
         test(event, ui)
@@ -14,14 +18,22 @@ $(document).ready(function() {
     });
 });
 
-let test1;
-let test2;
+
 
 // TODO: make groups follow where the item has been dragged
 function test (event, ui) {
   test1 = event;
   test2 = ui;
+  
+  // find the old group
+  // make sure that it is collapsed
+  collapse_groups();
+  // 
 
+}
+
+function collapse_groups () {
+   $(".group").hide('fast');
 }
 
 function changeTheme(themeNum) {
@@ -46,25 +58,13 @@ function off() {
 }
 
 
-
-function show(id) {
-    if (!$("#"+id).length) {
-    $( "<p id='"+id+"'class='group'>Test</p>" ).insertAfter( "#group"+id );
-    $("<span class='newline'></span>").insertAfter("#"+id);
-    } else {
-        $("#"+id+"+.newline").remove();
-        $("#"+id).remove();
-    }
-}
-
-
 $(".group-class").click(function(){
   if ($(this).hasClass('noclick')) {
     $(this).removeClass('noclick');
   }
   else {
-    $(this).next().slideToggle();
     $(this).find('.ui-icon').toggleClass("ui-icon-minusthick").toggleClass("ui-icon-plusthick");
+    $("."+$(this).attr('id')).toggle('fast');
   }
 });
   
