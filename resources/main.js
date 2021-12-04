@@ -1,5 +1,5 @@
-let test1;
-let test2;
+let one;
+let two;
 
 $(document).ready(function() {
     change();
@@ -12,6 +12,23 @@ $(document).ready(function() {
         ui.item.addClass('noclick');
         collapse_groups();
         },
+        stop: function (event, ui) {
+          var moved = ui.item,
+              replaced = ui.item.prev();
+          
+          // if replaced.length === 0 then the item has been pushed to the top of the list
+          // in this case we need the .next() sibling
+          if (replaced.length == 0) {
+              replaced = ui.item.next();
+          }
+          one = moved;
+          two = replaced;
+          console.log(moved);
+          console.log(replaced);
+          console.log("moved ID:" + moved.attr("id") + "replaced ID:" + replaced.attr("id"));
+          console.log("moved: " + moved.attr('class') + " replaced: " + replaced.attr('class'));
+          /* alert("moved ID:" + moved.attr("id"), "replaced ID:" + replaced.attr("id")) */;
+      },
       update: function( event, ui ) {
         test(event, ui)
       }
@@ -22,10 +39,11 @@ $(document).ready(function() {
 
 // TODO: make groups follow where the item has been dragged
 function test (event, ui) {
-  test1 = event;
-  test2 = ui;
+  // test1 = event;
+  // test2 = ui;
   
   // find the old group
+  // let old_group = $(".group"+)
   // make sure that it is collapsed
   collapse_groups();
   // 
