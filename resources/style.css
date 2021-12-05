@@ -304,13 +304,20 @@ input[type=text]:focus {
 
 
 .group{
-  /* transition: 1s ease-in all; */
-  width:89.5vw;
+  width:88vw;
   height:8vw;
-  /* width:100%; */
-  border: 1px red solid;
   grid-column-start: 1;
+  margin-left: 1%;
 }
+
+.group-class {
+  box-sizing:boder-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border: 3px grey solid;
+}
+
+
 .newline {
   grid-column-start: 1;
 }
