@@ -92,25 +92,13 @@ function change() {
 }
 
 $("#addButtonImage").click(function () {
-  // alert("you clicked the add button")
+  // console.log("clicked the add button")
   $('#addModal').dialog('open');
 });
 
-function test() {
+function add_remove() {
   // alert("test")
 }
-
-// $('body').click(function (event) 
-// {
-//    if(!$(event.target).closest('#addModal').length && !$(event.target).is('#addModal') && !$(event.target).is("#addButtonImage")) {
-//      console.log("test")
-//      $('#addModal').dialog('close');
-//     //  $("#addModal").dialog('close');
-//    }     
-// });
-
-
-
 
 $( function() {
   $( "#addModal" ).dialog({
@@ -120,8 +108,8 @@ $( function() {
     width: 400,
     modal: true,
     buttons: {
-      "Test": function() {
-        test();
+      "Save": function() {
+        add_remove();
       },
       Cancel: function() {
         $( this ).dialog( "close" );
@@ -129,3 +117,15 @@ $( function() {
     }
   });
 } );
+
+
+
+
+$("#check_remove").click( function() {
+  let checked = $('#check_remove').is(":checked")
+  console.log(checked)
+});
+
+$("#check_add").click( function() {
+
+});
