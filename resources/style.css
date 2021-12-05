@@ -325,3 +325,22 @@ input[type=text]:focus {
 .hide {
   display:none;
 }
+
+
+
+
+#addButtonImage {
+  position: fixed;
+  bottom: 14vh;
+  width: 10vh;
+  right:1vw;
+}
+
+.modal {
+  /* z-index:3; */
+}
+
+/* #ex1 {
+  z-index:3;
+} */
+

@@ -27,6 +27,8 @@ $(document).ready(function() {
     });
 });
 
+if (true)
+{
 
 function group_move (moved, replaced) {
   if (moved[0].attributes["id"]!= undefined) {
@@ -65,6 +67,11 @@ function off() {
     document.getElementById("overlay").style.display = "none";
 }
 
+$(document).on('click', 'body > .ui-widget-overlay', function(){
+  $("#addModal").dialog("close");
+  return false;
+});
+
 
 $(".group-class").click(function(){
   if ($(this).hasClass('noclick')) {
@@ -81,3 +88,44 @@ function change() {
     $("#bottomBar").children().children().removeClass("box").addClass("box-small");
     $("#iconArea").children().children().removeClass("box-small").addClass("box");
 }
+
+}
+
+$("#addButtonImage").click(function () {
+  // alert("you clicked the add button")
+  $('#addModal').dialog('open');
+});
+
+function test() {
+  // alert("test")
+}
+
+// $('body').click(function (event) 
+// {
+//    if(!$(event.target).closest('#addModal').length && !$(event.target).is('#addModal') && !$(event.target).is("#addButtonImage")) {
+//      console.log("test")
+//      $('#addModal').dialog('close');
+//     //  $("#addModal").dialog('close');
+//    }     
+// });
+
+
+
+
+$( function() {
+  $( "#addModal" ).dialog({
+    autoOpen: false,
+    resizable: false,
+    height: "auto",
+    width: 400,
+    modal: true,
+    buttons: {
+      "Test": function() {
+        test();
+      },
+      Cancel: function() {
+        $( this ).dialog( "close" );
+      }
+    }
+  });
+} );

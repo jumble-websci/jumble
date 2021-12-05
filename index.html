@@ -6,9 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="resources/style.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
   <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js" defer></script>
-  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js" defer></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> -->
   <script defer src="resources/main.js" defer></script>
 
   <title>Jumble</title>
@@ -49,21 +51,33 @@
     <button class="update"><i class="fa fa-check">UPDATE</i></button>
 
   </div>
+
+
+
+
   <div id="homepageBody">
     <!-- Title -->
     <div id="topDivHomepage">
-      <h1 class="title" onclick="off()">Jumble</h1>
+      <h1 class="title" onclick="off();off_2()">Jumble</h1>
     </div>
 
     <!-- About Us image link -->
     <a href="https://webdev-fall2021-tbd.github.io/"><img src="resources/images/aboutUs.png" alt="About Us"
         id="aboutUsImg"></a>
 
+    <!-- Add Button -->
+    <a href="#" ><img src="resources/images/add-button.svg" alt="Add/remove icons"
+      id="addButtonImage"></a>
+
+    <div id="addModal">
+      <p>this is a test</p>
+    </div>
+
     <!-- Settings image link, not sure how exactly this is going to be coded but this is temporary -->
     <a onclick="Settings()"><img src="resources/images/profile.png" alt="Settings" id="settingsLink"></a>
 
     <!-- This is where the icon stuff will go -->
-    <div id="iconArea" onclick="off()">
+    <div id="iconArea" onclick="off();off_2()">
       <div class = "container sort">
         <div class="box">
           <div class="icon">
@@ -219,7 +233,7 @@
         </div>
       </div>
     </div>
-    <div id="bottomBar" onclick="off()">
+    <div id="bottomBar" onclick="off();off_2()">
     <div class="container sort">
       <div class="box">
         <a href="https://spotify.com">
