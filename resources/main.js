@@ -239,7 +239,7 @@ $("#check_add").click( function() {
 function logout() {
   // Logout ajax call
   $.ajax({
-    url: "resources/login.php",
+    url: "resources/logout.php",
     type: "POST",
     success: () => {
       window.location = "login.html";
