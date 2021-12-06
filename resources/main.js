@@ -234,3 +234,18 @@ $("#check_add").click( function() {
   }
 
 });
+
+
+function logout() {
+  // Logout ajax call
+  $.ajax({
+    url: "resources/login.php",
+    type: "POST",
+    success: () => {
+      window.location = "login.html";
+    },
+    error: () => {
+      alert("There was an error connecting to the server, please try again.");
+    }
+  });
+}

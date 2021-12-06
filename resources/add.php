@@ -4,7 +4,7 @@ function add() {
     try {
         $DATABASE_HOST = 'localhost';
         $DATABASE_USER = 'root';
-        $DATABASE_PASS = '';
+        $DATABASE_PASS = 'wordpass';
         $DATABASE_NAME = 'jumble';
 
         $dbconn = new PDO("mysql:host=$DATABASE_HOST;dbname=$DATABASE_NAME", $DATABASE_USER, $DATABASE_PASS);

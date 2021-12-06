@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="resources/login.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+  <script src="resources/login.js" defer></script>
+  <title>Jumble</title>
+</head>
+
+<body>
+  <div id="content">
+    <div id="darken">
+      <div class="header">
+        <div>Jumble<span id="specialText"> Login</span></div>
+      </div>
+      <div class="loginForm">
+        <input type="text" placeholder="Email" id="email" name="email">
+        <input type="password" placeholder="Password" id="password" name="password">
+        <input type="checkbox" id="showPass" onclick="togglePass();">
+        <input type="submit" id="submitButton" value="Login" onclick="callLogin();">
+      </div>
+      <input type="button" id="toggleButton" value="Don't have an account?" onclick="toggleLogin();">
+    </div>
+  </div>
+</body>
