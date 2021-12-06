@@ -144,12 +144,12 @@ $( function() {
 } );
 
 
-function add_ajax() {
+function add_ajax(dat) {
 
   $.ajax({
     url: 'resources/add.php',
     type: 'post',
-    data: "add",
+    data: dat,
     success: function(response) {
         console.log(response);
         // $(".output").removeClass("hide").html(response);
@@ -158,8 +158,18 @@ function add_ajax() {
 });
 }
 
+// function remove_ajax()
+
+let remove_clicked = false;
 
 $("#check_remove").click( function() {
+    if (!remove_clicked) {
+      // remove_ajax();
+      add_ajax("remove")
+      remove_clicked = true;
+    }
+
+
   let checked = $('#check_remove').is(":checked")
   // console.log(checked)
   if (checked) { // if the checkbox has been checked, show the fieldset with what to remove (build this from the page)
@@ -170,7 +180,14 @@ $("#check_remove").click( function() {
 
 });
 
+
+let add_clicked = false;
 $("#check_add").click( function() {
+  if (!add_clicked) {
+    add_ajax("add");
+    add_clicked = true;
+  }
+
   let checked = $('#check_add').is(':checked') 
   if (checked) { // show the fieldset with the add stuff info (build this from database of things that you can add)
     $("#add").show('fast');

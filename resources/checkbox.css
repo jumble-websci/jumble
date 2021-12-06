@@ -308,3 +308,8 @@ label.el-checkbox {
 .el-switch.el-switch-lg {
   font-size: 125%;
 }
+
+
+.el-checkbox-style {
+  padding: 2.5px;
+}
