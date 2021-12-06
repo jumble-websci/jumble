@@ -144,15 +144,13 @@ $( function() {
 } );
 
 
-function add_ajax(dat) {
-
+function form_ajax(dat) {
   $.ajax({
     url: 'resources/add.php',
     type: 'post',
     data: dat,
     success: function(response) {
         console.log(response);
-        // $(".output").removeClass("hide").html(response);
         $("#add_section").html(response);
     }
 });
@@ -165,7 +163,7 @@ let remove_clicked = false;
 $("#check_remove").click( function() {
     if (!remove_clicked) {
       // remove_ajax();
-      add_ajax("remove")
+      form_ajax("remove")
       remove_clicked = true;
     }
 
@@ -184,7 +182,7 @@ $("#check_remove").click( function() {
 let add_clicked = false;
 $("#check_add").click( function() {
   if (!add_clicked) {
-    add_ajax("add");
+    form_ajax("add");
     add_clicked = true;
   }
 
