@@ -1,0 +1,154 @@
+@import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+
+
+body{
+	margin: 0;
+	padding: 0;
+}
+
+#content{
+	width: 100vw;
+	height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #FA8BFF;
+	background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
+	background-size: cover;
+}
+
+#darken {
+  position: absolute;
+  top: calc(50% - 20%);
+	left: calc(50% - 15%);
+  width: 30%;
+  height: 40%;
+  border-radius: 20px;
+  background-color: rgba(0,0,0,0.15);
+}
+
+#toggleButton {
+  position: absolute;
+  bottom: 1%;
+  left: 33%;
+  width: 34%;
+  color: #fff;
+  background: transparent;
+	border: none;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+}
+
+#toggleButton:hover {
+  color: rgb(102, 204, 245);
+  cursor: pointer;
+}
+
+.header{
+	position: absolute;
+	top: calc(50% - 35px);
+	left: calc(50% - 255px);
+	z-index: 2;
+}
+
+.header div{
+	float: left;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 35px;
+	font-weight: 200;
+}
+
+#specialText {
+	color: #116cd3;
+}
+
+.loginForm {
+	position: absolute;
+	top: calc(50% - 75px);
+	left: calc(50%);
+	height: 150px;
+	width: 350px;
+	padding: 10px;
+	z-index: 2;
+}
+
+.loginForm input[type=text]{
+	width: 250px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+  margin-top: 10px;
+}
+
+.loginForm input[type=password]{
+	width: 250px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+	margin-top: 10px;
+}
+
+#showPass {
+  position: relative;
+  left: -9%;
+}
+
+.loginForm input[type=submit]{
+	width: 260px;
+	height: 35px;
+	background: #fff;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	color: #a18d6c;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 10px;
+}
+
+.loginForm input[type=submit]:hover{
+	opacity: 0.8;
+}
+
+.loginForm input[type=submit]:active{
+	opacity: 0.6;
+}
+
+.loginForm input[type=text]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+}
+
+.loginForm input[type=password]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+}
+
+.loginForm input[type=submit]:focus{
+	outline: none;
+}
+
+::-webkit-input-placeholder{
+   color: rgba(255,255,255,0.6);
+}
+
+::-moz-input-placeholder{
+   color: rgba(255,255,255,0.6);
+}
