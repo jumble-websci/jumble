@@ -6,8 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="resources/style.css">
+  <link rel="stylesheet" href="resources/checkbox.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
   <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js" defer></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> -->
   <script defer src="resources/main.js" defer></script>
   <title>Jumble</title>
 </head>
@@ -50,6 +54,10 @@
     <button class="update">SIGN IN</button>
      <a id = "sp" href="#">Create Account</a>
   </div>
+
+
+
+
   <div id="homepageBody">
     <!-- Title -->
     <div id="topDivHomepage">
@@ -60,43 +68,75 @@
     <a href="https://webdev-fall2021-tbd.github.io/"><img src="resources/images/aboutUs.png" alt="About Us"
         id="aboutUsImg"></a>
 
+    <!-- Add Button -->
+    <a href="#" ><img src="resources/images/add-button.svg" alt="Add/remove icons"
+      id="addButtonImage"></a>
+
+    <div id="addModal">
+      <p>form wip</p>
+      <form action="POST" id="add/remove" onsubmit="console.log('submitted');">
+        <div class="el-checkbox" id="remove-checkbox">
+          <span class="margin-r">Add an item</span>
+          <input type="checkbox" name="check_add" id="check_add">
+          <label class="el-checkbox-style" for="check_add"></label>
+
+          <span class="margin-r">Remove an item</span>
+          <input type="checkbox" name="check_remove" id="check_remove">
+          <label class="el-checkbox-style" for="check_remove"></label>
+        </div>
+        <hr/>
+        <fieldset id="add" style="display:none"> 
+          <legend >Add an Item</legend>
+            <div id="add_section">  <!-- to be built from an ajax call using a database query -->
+
+            </div>
+            <!-- <button type="submit">Add</button> -->
+        </fieldset>
+        <fieldset id="remove" style="display:none"> 
+          <legend>Remove an Item</legend>
+            <div id="remove_section">  <!-- to be built with an ajax call reading in everything that is currently on the page -->
+              
+            </div>
+            <!-- <button type="submit" >Remove</button> -->
+        </fieldset>
+      </form>
+    </div>
+
     <!-- Settings image link, not sure how exactly this is going to be coded but this is temporary -->
     <a onclick="Settings()"><img src="resources/images/profile.png" alt="Settings" id="settingsLink"></a>
 
     <!-- This is where the icon stuff will go -->
     <div id="iconArea" onclick="off()">
-      <div class = "container sort">
-        <div class="box">
-          <div class="icon">
-            <a href="https://instagram.com">
-              <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="instagram"> 
-            </a>
-          </div>
+      <div id="main" class = "container sort">
+        <div class="box 6">
+          <a href="https://instagram.com">
+            <img class="icon" src="resources/images/instagram.svg" alt="instagram"> 
+          </a>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 13">
           <a href="https://twitter.com">
             <img class="icon" src="https://upload.wikimedia.org/wikipedia/en/thumb/6/60/Twitter_Logo_as_of_2021.svg/1280px-Twitter_Logo_as_of_2021.svg.png" alt="twitter">
           </a>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 1">
             <span class="none"></span>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 4">
           <a href="https://facebook.com">
             <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Facebook_logo_%28square%29.png" alt="facebook">
           </a>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 14">
           <a href="https://youtube.com">
             <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/2560px-YouTube_full-color_icon_%282017%29.svg.png" alt="youtube">
           </a>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 12">
           <a href="https://tiktok.com">
             <img class="icon" src="https://cliply.co/wp-content/uploads/2021/02/372102690_TIKTOK_LOGO_1080.png" alt="tiktok">
           </a>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 9">
           <a href="https://reddit.com">
             <img class="icon" src="https://www.redditinc.com/assets/images/site/reddit-logo.png" alt="reddit">
           </a>
@@ -106,27 +146,27 @@
         </div>
         <div class="group1 group newline hide">Test area 1 </div>
         <div class="group1 newline hide"></div>
-        <div class="box">
+        <div class="box 8">
           <a href="https://pinterest.com">
             <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/0/08/Pinterest-logo.png" alt="pintereset">
           </a>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 2">
           <a href="https://discord.com">
             <img class="icon" src="https://logos-world.net/wp-content/uploads/2020/12/Discord-Logo.png" alt="discord">
           </a>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 10">
           <a href="https://slack.com">
             <img class="icon" src="https://cdn.freebiesupply.com/logos/large/2x/slack-logo-icon.png" alt="slack">
           </a>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 7">
           <a href="https://netflix.com">
             <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Netflix_icon.svg/407px-Netflix_icon.svg.png" alt="netflix">
           </a>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 5">
           <a href="https://hbo.com">
             <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/HBO_logo.svg/422px-HBO_logo.svg.png" alt="hbo">
           </a>
@@ -136,84 +176,89 @@
           <span class="none"></span>
         </div>
         <div class="group2 group newline hide sort">
+          <div class="box 10">
             <a href="https://slack.com">
               <img class="icon" src="resources/images/slack.png" alt="slack">
             </a>
-          <a href="https://slack.com">
-            <img class="icon" src="resources/images/slack.png" alt="slack">
-          </a>
+          </div>
+
+          <div class="box 10">
+            <a href="https://slack.com">
+              <img class="icon" src="resources/images/slack.png" alt="slack">
+            </a>
+          </div>
         </div>
         <div class="group2 newline hide"></div>
-        <div class="box">
+        <div class="box 1">
           <span class="none"></span>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 1">
           <span class="none"></span>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 1">
           <span class="none"></span>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 1">
           <span class="none"></span>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 1">
           <span class="none"></span>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 1">
           <span class="none"></span>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 1">
           <span class="none"></span>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 1">
           <span class="none"></span>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 1">
           <span class="none"></span>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 1">
           <span class="none"></span>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 1">
           <span class="none"></span>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 1">
           <span class="none"></span>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 1">
           <span class="none"></span>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 1">
           <span class="none"></span>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 1">
           <span class="none"></span>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 1">
           <span class="none"></span>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 1">
           <span class="none"></span>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 1">
           <span class="none"></span>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 1">
           <span class="none"></span>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 1">
           <span class="none"></span>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 1">
           <span class="none"></span>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 1">
           <span class="none"></span>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 1">
           <span class="none"></span>
         </div>
-        <div draggable="true" class="box">
+        <div class="box 3">
           <a href="https://disneyplus.com">
             <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Disney%2B_logo.svg/800px-Disney%2B_logo.svg.png" alt="disney+">
           </a>
@@ -222,60 +267,46 @@
     </div>
     <div id="bottomBar" onclick="off()">
     <div class="container sort">
-      <div class="box">
+      <div class="box 11">
         <a href="https://spotify.com">
         <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/168px-Spotify_logo_without_text.svg.png" alt="spotify">
       </a>
       </div>
-      <div draggable="true" class="box">
+      <div class="box 1">
         <span class="none"></span>
       </div>
-      <div draggable="true" class="box">
+      <div class="box 1">
         <span class="none"></span>
       </div>
-      <div draggable="true" class="box">
+      <div class="box 1">
         <span class="none"></span>
       </div>
-      <div draggable="true" class="box">
+      <div class="box 1">
         <span class="none"></span>
       </div>
-      <div draggable="true" class="box">
+      <div class="box 1">
         <span class="none"></span>
       </div>
-      <div draggable="true" class="box">
+      <div class="box 1">
         <span class="none"></span>
       </div>
-      <div draggable="true" class="box">
+      <div class="box 1">
         <span class="none"></span>
       </div>
-      <div draggable="true" class="box">
+      <div class="box 1">
         <span class="none"></span>
       </div>
-      <div draggable="true" class="box">
+      <div class="box 1">
         <span class="none"></span>
       </div>
-      <div draggable="true" class="box">
+      <div class="box 1">
         <span class="none"></span>
       </div>
-      <div draggable="true" class="box">
+      <div class="box 1">
         <span class="none"></span>
-      </div>
-      <div draggable="true" class="box">
-        <span class="none"></span>
-      </div>
-      <div draggable="true" class="box">
-        <span class="none"></span>
-      </div>
-      <div draggable="true" class="box">
-        <span class="none"></span>
-      </div>
-      <div draggable="true" class="box">
-        <span class="none"></span>
-      </div>
-      
+      </div>    
     </div>
     </div>
 
   </div>
 </body>
-
