@@ -133,15 +133,29 @@ $( function() {
     width: 400,
     modal: true,
     buttons: {
-      "Save": function() {
-        add_remove();
+      "Close": function() {
+          $( this ).dialog( "close" );
       },
-      Cancel: function() {
-        $( this ).dialog( "close" );
+      "Save": function() {
+          $.ajax({
+              url: "#",                   //
+              timeout: 30000,
+              type: "POST",
+              // data: $('#add/remove').serialize(),
+              // dataType: 'json',
+              error: function(XMLHttpRequest, textStatus, errorThrown)  {
+                  alert("An error has occurred making the request: " + errorThrown)
+              },
+              success: function(data){                                                        
+                   //Do stuff here on success such as modal info   
+                   alert("saved");   
+                      //  $( this ).dialog( "close" );
+              }
+          });
       }
     }
   });
-} );
+});
 
 
 function form_ajax(dat) {
@@ -151,7 +165,7 @@ function form_ajax(dat) {
     data: dat,
     success: function(response) {
         console.log(response);
-        $("#add_section").html(response);
+        $("#" + dat + "_section").html(response);
     }
 });
 }

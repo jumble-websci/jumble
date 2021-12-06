@@ -16,12 +16,6 @@ function add() {
         // echo count($data);
         // var_dump($data);
         // echo '<div class="">';
-        echo '<div class="el-checkbox">';
-                
-            echo '<input type="checkbox" id="blank" value="option">';
-            echo '<label class="el-checkbox-style" for="blank"></label>';
-            echo '<span class="margin-r"> blank space</span>';
-        echo '</div>';
 
         echo '<div class="el-checkbox">';
                     
