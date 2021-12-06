@@ -26,7 +26,7 @@ $(document).ready(function() {
       }
     });
 
-    add_ajax();
+    // add_ajax();
 
 });
 
@@ -125,9 +125,9 @@ $( function() {
 function add_ajax() {
 
   $.ajax({
-    url: 'add.php',
+    url: 'resources/add.php',
     type: 'post',
-    data: { "add": true},
+    data: "add",
     success: function(response) {
         console.log(response);
         // $(".output").removeClass("hide").html(response);
