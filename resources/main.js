@@ -56,7 +56,20 @@ function changeTheme(themeNum) {
 
         document.getElementById("bottomBar").style.backgroundColor = data["themes"][themeNum]["barColor"];
         document.getElementById("bottomBar").style.backgroundImage = data["themes"][themeNum]["barImage"];
+
+       
         });
+}
+
+
+function hover(i){
+  
+  $.getJSON("resources/themes.json", data => {
+    document.getElementsByClassName("theme")[i].style.backgroundImage = data["themes"][i]["backgroundImage"];
+
+   
+    });
+   
 }
 
 //For Settings
@@ -69,6 +82,7 @@ function Settings() {
 function off() {
     document.getElementById("overlay").style.display = "none";
 }
+
 
 $(document).on('click', 'body > .ui-widget-overlay', function(){
   $("#addModal").dialog("close");
@@ -86,6 +100,14 @@ $(".group-class").click(function(){
   }
 });
   
+function hideform() {
+  document.getElementById("info").style.display = "none";
+}
+
+function showform() {
+  document.getElementById("info").style.display = "block";
+}
+
 
 function change() {
     $("#bottomBar").children().children().removeClass("box").addClass("box-small");
