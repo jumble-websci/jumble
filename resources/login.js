@@ -70,6 +70,17 @@ function callLogin() {
       error: () => {
         alert("There was an error connecting to the server, please try again.");
       }
-    });  
+    });
   }
 }
+
+// Allow pressing enter to login/signup
+$(document).ready(() => {
+
+  document.querySelector("#password").addEventListener("keyup", event => {
+    if (event.key !== "Enter") return; 
+    document.querySelector("#submitButton").click(); 
+    event.preventDefault(); 
+  });
+
+});
