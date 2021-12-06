@@ -88,40 +88,40 @@ body {
 
 #overlay {
   font-family: 'Birthstone', cursive;
-  margin-left: 27%;
+  margin-left: 32%;
   margin-top: 11vh;
   position:fixed;
   display: none;
-  width: 40%;
-  height: 80%;
+  width: 34%;
+  height: 87%;
   top: 0;
   left:0;
   right: 0;
   bottom: 0;
-  background-image: url("./images/settings.jpg");
+  background-color: whitesmoke;
   background-size: 20%;
   z-index: 5;
+  border-radius: 6px;
 }
 
 .field{
-  font-size: 45px;
+  position:relative;
+  margin-top: -2%;
+  text-align: center;
+  font-size: 50px;
   color:black;
-}
-.value{
- font-size: 15px;
-  color:black;
-  background-color: black;
   
 }
 
-.info{
-  top: 50%;
-  left: 50%;
+
+#info{
+  top: 62%;
+  left: 48%;
   transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   position: absolute;
-  
-}
+  width: 55%;
+  }
 
 .return{
   background-color:#0b7dda;
@@ -140,31 +140,50 @@ body {
 
 .update{
   position: absolute;
-  top: 90%;
-  left: 50%;
-  font-size: 30px;
+  top: 93%;
+  left: 51%;
+  font-size: 16px;
+  height: 40px;
+  width: 93px;
   color: bisque;
-  background-color: black;
+  background-color: orangered;
   transform: translate(-50%,-50%);
+  border-radius: 40%;
+  border:none;
   
 }
 
 .update:hover{
   background-color:#0b7dda;
+  color:black;
   cursor: pointer;
+  border: 2px solid black;
+}
+
+
+#sp{
+  position: relative;
+  font-size: 28px;
+  font-weight: bold;
+  top:62%;
+  left: 75%;
+ text-decoration: none;
+  color: rgb(59, 59, 59);
+}
+#sp:hover{
+  color: #0b7dda;
 }
 
 .title2 {
   font-family: 'Birthstone', cursive;
   text-align: center;
   color: black;
-  font-size: 13vh;
-  height: 15vh;
+  font-size: 10vh;
+  height: 13vh;
   position: relative;
   margin: auto;
   left: 0;
   right: 0;
-  text-align: center;
   border-bottom: 6px double;
 }
 
@@ -172,12 +191,11 @@ body {
 .btn {
  background-color:black;
   color: white;
-  padding: 16px;
+  padding: 13px;
   font-size: 16px;
   border: none;
   outline: none;
 }
-
 
 .about{
   background-color:black;
@@ -196,6 +214,10 @@ body {
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
+  position:relative;
+  top:27%;
+  margin-left: 40%;
+  align-content: center;
   position: absolute;
   display: inline-block;
 }
@@ -204,26 +226,31 @@ body {
 .dropdown-content {
   display: none;
   position: relative;
-  background-color: #f1f1f1;
+ background-color: black;
   min-width: 160px;
-  z-index: 1;
+  
+}
+
+.dropdown-content a:hover {
+  color: black;
+  border-radius: 6px;
+  border: 3px solid black;
 }
 
 /* Options inside the dropdown */
 .dropdown-content a {
   padding: 16px 20px;
   border: none;
-  border-bottom: 2px dotted #0b7dda;
-  border-radius: 4px;
-  color: black;
+  border-bottom: 2px solid black;
+  color: white;
   text-decoration: none;
   display: block;
-  background-color: blanchedalmond;
-
+ 
+  transition: 0.3s;
+  
 }
 
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd}
+
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
@@ -235,21 +262,46 @@ body {
   background-color: #0b7dda;
 }
 
+
+.value{
+
+  margin-bottom: 6px;
+}
+
+
+input{
+  color: black;
+  background-color: rgb(218, 218, 221);
+	border: none;
+	padding: 25px 20px;
+	width: 102%;
+  border-radius: 6px;
+  display: block;
+  }
+
+input::placeholder{
+ color:rgb(82, 79, 79);
+ font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ font-weight:bolder;
+}
+
+input:hover{
+  background-color: rgb(209, 207, 207);
+}
+
 /*style the input boxes */
 input[type=text], select {
   color:black;
     margin: 3px 0;
     display: inline-block;
     border:none;
-    border-bottom: 2px solid #0b7dda;
-    border-radius: 4px;
-    box-sizing: border-box;
     outline:none;
   
 }
 
 input[type=text]:focus {
-  background-color: lightblue;
+  background-color: rgb(198, 232, 243);
+  border: 1px solid black;
   
 }
 
