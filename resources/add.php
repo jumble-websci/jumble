@@ -16,16 +16,27 @@ function add() {
         // echo count($data);
         // var_dump($data);
         // echo '<div class="">';
+        echo '<div class="el-checkbox">';
+                
+            echo '<input type="checkbox" id="blank" value="option">';
+            echo '<label class="el-checkbox-style" for="blank"></label>';
+            echo '<span class="margin-r"> blank space</span>';
+        echo '</div>';
 
+        echo '<div class="el-checkbox">';
+                    
+            echo '<input type="checkbox" id="add_group" value="option">';
+            echo '<label class="el-checkbox-style" for="add_group"></label>';
+            echo '<span class="margin-r"> group </span>';
+        echo '</div>';
 
         for ($i = 0; $i < count($data); $i++) {
-            // echo '<p>' . $data[$i]['name'] . '</p>';
 
             echo '<div class="el-checkbox">';
                 
                 echo '<input type="checkbox" id="' . $data[$i]["name"] .'" value="option">';
                 echo '<label class="el-checkbox-style" for="' . $data[$i]["name"] .'"></label>';
-                echo '<span class="margin-r">' . $data[$i]["name"]. '</span>';
+                echo '<span class="margin-r"> ' . $data[$i]["name"]. '</span>';
             echo '</div>';
         }
 
