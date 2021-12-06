@@ -121,8 +121,28 @@ $("#addButtonImage").click(function () {
   $('#addModal').dialog('open');
 });
 
-function add_remove() {
-  // alert("test")
+function add_remove(data) {
+  // if the add button is checked then add it to the website
+  for (i = 0; i < $("#add_section").children()['length']; i++) {
+    let child = $("#add_section").children()[i];
+    let input = child['children'][0].attributes['id'].value
+    let checked = $("#"+input).is(':checked')
+    if (checked) {
+      console.log(input)
+      let last = $("#main:last")
+      last.append("<div class='box'>this is a test</div>");
+    }
+  }
+  // for (let child in $("#add_section").children()) {
+  //   // let checked = $('#check_add').is(':checked') 
+  //   if (child.is(':checked')) {
+
+  //   }
+  // }
+
+  for (let child in $("#remove_section").children()) {
+
+  }
 }
 
 $( function() {
@@ -138,8 +158,8 @@ $( function() {
       },
       "Save": function() {
           $.ajax({
-              url: "#",                   //
-              timeout: 30000,
+              // url: "#",                   
+              // timeout: 30000,
               type: "POST",
               // data: $('#add/remove').serialize(),
               // dataType: 'json',
@@ -148,8 +168,9 @@ $( function() {
               },
               success: function(data){                                                        
                    //Do stuff here on success such as modal info   
-                   alert("saved");   
-                      //  $( this ).dialog( "close" );
+                  // alert("saved");   
+                  add_remove(data);
+                  $( "#addModal" ).dialog( "close" );
               }
           });
       }

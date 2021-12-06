@@ -47,7 +47,7 @@ function add() {
 
 
 if (isset($_POST['add'])) {
-    echo "<p> querying from database now </p>";
+    // echo "<p> querying from database now </p>";
     add();
 }
 
