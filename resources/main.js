@@ -1,7 +1,7 @@
 $(document).ready(function() {
     change();
     //Make default theme there
-    if (window.location.pathname == "/index.html") {
+    if (window.location.pathname === "/index.html" || window.location.pathname === "/github/jumble/index.html") {
         changeTheme(0);
     }
     $( ".sort" ).sortable({
@@ -153,6 +153,7 @@ function add_ajax() {
     success: function(response) {
         console.log(response);
         // $(".output").removeClass("hide").html(response);
+        $("#add_section").html(response);
     }
 });
 }
@@ -162,9 +163,9 @@ $("#check_remove").click( function() {
   let checked = $('#check_remove').is(":checked")
   // console.log(checked)
   if (checked) { // if the checkbox has been checked, show the fieldset with what to remove (build this from the page)
-    $("#add").show('fast');
+    $("#remove").show('fast');
   } else {
-    $('#add').hide('fast');
+    $('#remove').hide('fast');
   }
 
 });
@@ -172,9 +173,9 @@ $("#check_remove").click( function() {
 $("#check_add").click( function() {
   let checked = $('#check_add').is(':checked') 
   if (checked) { // show the fieldset with the add stuff info (build this from database of things that you can add)
-    $("#remove").show('fast');
+    $("#add").show('fast');
   } else {
-    $("#remove").hide('fast');
+    $("#add").hide('fast');
   }
 
 });
