@@ -82,8 +82,20 @@
           <input type="checkbox" name="check_add" id="check_add">
           <label class="el-checkbox-style" for="check_add"></label>
         </div>
-        <fieldset>
+        <hr/>
+        <fieldset id="add" style="display:none"> 
+          <legend >Add an Item</legend>
+            <div id="add_section">  <!-- to be built from an ajax call using a database query -->
 
+            </div>
+            <button type="submit">Add</button>
+        </fieldset>
+        <fieldset id="remove" style="display:none"> 
+          <legend>Remove an Item</legend>
+            <div id="remove button">  <!-- to be built with an ajax call reading in everything that is currently on the page -->
+              
+            </div>
+            <button type="submit" >Remove</button>
         </fieldset>
       </form>
     </div>

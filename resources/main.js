@@ -25,6 +25,9 @@ $(document).ready(function() {
           }
       }
     });
+
+    add_ajax();
+
 });
 
 if (true)
@@ -119,13 +122,37 @@ $( function() {
 } );
 
 
+function add_ajax() {
+
+  $.ajax({
+    url: 'add.php',
+    type: 'post',
+    data: { "add": true},
+    success: function(response) {
+        console.log(response);
+        // $(".output").removeClass("hide").html(response);
+    }
+});
+}
 
 
 $("#check_remove").click( function() {
   let checked = $('#check_remove').is(":checked")
-  console.log(checked)
+  // console.log(checked)
+  if (checked) { // if the checkbox has been checked, show the fieldset with what to remove (build this from the page)
+    $("#add").show('fast');
+  } else {
+    $('#add').hide('fast');
+  }
+
 });
 
 $("#check_add").click( function() {
+  let checked = $('#check_add').is(':checked') 
+  if (checked) { // show the fieldset with the add stuff info (build this from database of things that you can add)
+    $("#remove").show('fast');
+  } else {
+    $("#remove").hide('fast');
+  }
 
 });
