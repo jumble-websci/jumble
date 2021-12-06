@@ -1,9 +1,6 @@
 $(document).ready(function() {
     change();
-    //Make default theme there
-    if (window.location.pathname === "/index.html" || window.location.pathname === "/github/jumble/index.html") {
-        changeTheme(0);
-    }
+    changeTheme(0);
     $( ".sort" ).sortable({
       start: function(event, ui){
         ui.item.addClass('noclick');
@@ -81,6 +78,14 @@ function Settings() {
 
 function off() {
     document.getElementById("overlay").style.display = "none";
+}
+
+function hideform() {
+  document.getElementById("info").style.display = "none";
+}
+
+function showform() {
+  document.getElementById("info").style.display = "block";
 }
 
 
