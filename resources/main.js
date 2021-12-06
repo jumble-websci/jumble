@@ -1,9 +1,9 @@
 $(document).ready(function() {
     change();
-    //Make default theme there
-    if (window.location.pathname == "/index.html") {
-        changeTheme(0);
-    }
+
+    //Make default theme here
+    changeTheme(0);
+    
     $( ".sort" ).sortable({
       start: function(event, ui){
         ui.item.addClass('noclick');
