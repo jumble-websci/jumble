@@ -55,13 +55,19 @@ function hover(i){
 
 
 
-function Settings() {
+function Greeting(){
   const xmlhttp = new XMLHttpRequest();
   xmlhttp.onload = function() {
       document.getElementById("name").innerHTML = this.responseText;
     }
     xmlhttp.open("GET", "resources/greeting.php",true);
     xmlhttp.send();
+}
+
+
+
+function Settings() {
+  Greeting();
   
   document.getElementById("overlay").style.display = "block";
    
@@ -234,7 +240,6 @@ function logout() {
   });
 }
 
-
 function callUpdate() {
   let email = document.getElementById("email").value;
   let fname = document.getElementById("fname").value;
@@ -256,13 +261,14 @@ function callUpdate() {
       }
     });  
 
-    Settings();
+    Greeting();
 
   document.getElementById("email").value = "";
   document.getElementById("fname").value = "";
   document.getElementById("lname").value = "";
   
 }
+
 function save() {
   let main = $("#main");
   let bot = $("#bottomBar .container");
