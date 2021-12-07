@@ -46,7 +46,7 @@ function callLogin() {
     $.ajax({
       url: "resources/login.php",
       type: "GET",
-      data: { email: email, password: password },
+      data: { email: email, password: password},
       success: (data) => {
         if (data.substring(0, 5) == "Error") {
           showError(data);

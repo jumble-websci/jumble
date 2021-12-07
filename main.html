@@ -20,7 +20,8 @@
 
   <div id="overlay">
     <h1 class="title2">SETTINGS</h1>
-    
+    <h1 class="field" >Update Information</h1>
+ 
     <!--Background/Theme-->
     <div onmouseleave="showform();" onmouseover="hideform();" class="dropdown">
       <button  class="btn" style="border-left:1px solid navy">
@@ -32,27 +33,26 @@
         <a class = "theme" onmouseover="hover(2);" onclick="changeTheme(2);">Theme 3</a>
       </div>
     </div>
+    <h2 id = "name"></h2>
 
-    <h1 class="field" >Sign In</h1>
+    
     <div id="info">
       <form>
       <!--FName-->
       
-      <div class="value"><input type="text" id="fName" placeholder="First Name"></div>
+      <div class="value"><input type="text" id="fname" maxlength="255" placeholder="First Name"></div>
       <!--LName-->
       
-      <div class="value"><input type="text" id="lName" placeholder="Last Name"></div>
+      <div class="value"><input type="text" id="lname" maxlength="255" placeholder="Last Name"></div>
       <!--Email-->
       
-      <div class="value"><input type="text" id="email" placeholder="Email"></div>
-      <!--Password-->
-     
-      <div class="value"><input type="text" id="password" placeholder="Password"></div>
+      <div class="value"><input type="text" id="email" maxlength="255" placeholder="Email"></div>
+
     </form>
     </div>
     <!--Update-->
-    <button class="update">SIGN IN</button>
-    <p id="sp" href="#" onclick="logout();">Logout</a>
+    <button class="update"  onclick="callUpdate();">UPDATE</button>
+    <a id="sp" href="#" onclick="logout();">Logout</a>
   </div>
 
 
