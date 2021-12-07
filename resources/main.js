@@ -116,12 +116,6 @@ function add_remove(data) {
       last.append("<div class='box'>this is a test</div>");
     }
   }
-  // for (let child in $("#add_section").children()) {
-  //   // let checked = $('#check_add').is(':checked') 
-  //   if (child.is(':checked')) {
-
-  //   }
-  // }
 
   for (let child in $("#remove_section").children()) {
 
@@ -173,8 +167,6 @@ function form_ajax(dat) {
     }
 });
 }
-
-// function remove_ajax()
 
 let remove_clicked = false;
 
@@ -228,6 +220,34 @@ function logout() {
   });
 }
 
+function save() {
+  let main = $("#main");
+  let bot = $("#bottomBar .container");
+
+  let main_out = [];
+  let bot_out = [];
+  
+  let i = 0;
+  // for (i = 0; i < main.children()['length']; i++) {
+  while (i < main.children()['length']) {
+    main_out.push(main.children()[i].classList[1]);
+    if (main.children()[i].classList.contains("group-class")) {
+        // skip the next two things
+        i += 2;
+    }
+    i++;
+  }
+  console.log(main_out)
+
+  i = 0;
+  while ( i <bot.children()['length']) {
+    bot_out.push(bot.children()[i].classList[0]);
+    i+=1;
+  }
+  console.log(bot_out)
+
+}
+
 $(document).ready(function() {
   change();
   // Get default theme
@@ -268,3 +288,4 @@ $(document).ready(function() {
   // add_ajax();
 
 });
+
