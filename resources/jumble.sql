@@ -47,11 +47,11 @@ INSERT INTO `icons` (`id`, `name`, `link`, `path`) VALUES
 (6, 'instagram', 'https://wwww.instagram.com', 'resources/images/instagram.svg'),
 (7, 'netflix', 'https://www.netflix.com', 'resources/images/netflix.png'),
 (8, 'pinterest', 'https://www.pinterest.com', 'resources/images/pinterest.png'),
-(9, 'reddit', 'https;//www.reddit.com', 'resources/images/reddit.png'),
+(9, 'reddit', 'https://www.reddit.com', 'resources/images/reddit.png'),
 (10, 'slack', 'https://www.slack.com', 'resources/images/slack.png'),
 (11, 'spotify', 'https://www.spotify.com', 'resources/images/spotify.png'),
 (12, 'tiktok', 'https://www.tiktok.com', 'resources/images/tiktok.png'),
-(13, 'twitter', 'https;//www.twitter.com', 'resources/images/twitter.png'),
+(13, 'twitter', 'https://www.twitter.com', 'resources/images/twitter.png'),
 (14, 'youtube', 'https://www.youtube.com', 'resources/images/youtube.png'),
 (99, 'group', '', '');
 

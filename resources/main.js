@@ -1,31 +1,3 @@
-$(document).ready(function() {
-    change();
-    changeTheme(0);
-    $( ".sort" ).sortable({
-      start: function(event, ui){
-        ui.item.addClass('noclick');
-        collapse_groups();
-        },
-        stop: function (event, ui) {
-          test1 = event;
-          test2 = ui;
-          var moved = ui.item,
-              replaced = ui.item.prev();
-          
-          // if replaced.length === 0 then the item has been pushed to the top of the list
-          // in this case we need the .next() sibling
-          if (replaced.length == 0) {
-              replaced = ui.item.next();
-          }
-          if (!(moved[0].attributes["id"] == undefined && replaced[0].attributes["id"] == undefined)) {
-            group_move(moved, replaced);
-          }
-      }
-    });
-
-    // add_ajax();
-
-});
 
 if (true)
 {
@@ -47,15 +19,21 @@ function collapse_groups () {
 }
 
 function changeTheme(themeNum) {
-    $.getJSON("resources/themes.json", data => {
-        document.getElementById("homepageBody").style.backgroundColor = data["themes"][themeNum]["backgroundColor"];
-        document.getElementById("homepageBody").style.backgroundImage = data["themes"][themeNum]["backgroundImage"];
+  // Change the theme
+  $.getJSON("resources/themes.json", data => {
+    document.getElementById("homepageBody").style.backgroundColor = data["themes"][themeNum]["backgroundColor"];
+    document.getElementById("homepageBody").style.backgroundImage = data["themes"][themeNum]["backgroundImage"];
 
-        document.getElementById("bottomBar").style.backgroundColor = data["themes"][themeNum]["barColor"];
-        document.getElementById("bottomBar").style.backgroundImage = data["themes"][themeNum]["barImage"];
+    document.getElementById("bottomBar").style.backgroundColor = data["themes"][themeNum]["barColor"];
+    document.getElementById("bottomBar").style.backgroundImage = data["themes"][themeNum]["barImage"];
+  });
 
-       
-        });
+  // Save the theme
+  $.ajax({
+    url: "resources/theme.php",
+    type: "POST",
+    data: { num: themeNum}
+  });
 }
 
 
@@ -242,8 +220,6 @@ function logout() {
   });
 }
 
-
-
 function save() {
   let main = $("#main");
   let bot = $("#bottomBar .container");
@@ -271,3 +247,45 @@ function save() {
   console.log(bot_out)
 
 }
+
+$(document).ready(function() {
+  change();
+  // Get default theme
+  $.ajax({
+    url: "resources/theme.php",
+    type: "GET",
+    success: (data) => {
+      changeTheme(data);
+    },
+    error: () => {
+      changeTheme(0);
+    }
+  });
+
+  // Moving groups around
+  $( ".sort" ).sortable({
+    start: function(event, ui){
+      ui.item.addClass('noclick');
+      collapse_groups();
+      },
+      stop: function (event, ui) {
+        test1 = event;
+        test2 = ui;
+        var moved = ui.item,
+            replaced = ui.item.prev();
+        
+        // if replaced.length === 0 then the item has been pushed to the top of the list
+        // in this case we need the .next() sibling
+        if (replaced.length == 0) {
+            replaced = ui.item.next();
+        }
+        if (!(moved[0].attributes["id"] == undefined && replaced[0].attributes["id"] == undefined)) {
+          group_move(moved, replaced);
+        }
+    }
+  });
+
+  // add_ajax();
+
+});
+
