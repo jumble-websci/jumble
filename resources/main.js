@@ -5,7 +5,6 @@ if (true)
 function group_move (moved, replaced) {
   if (moved[0].attributes["id"]!= undefined) {
     $("."+moved[0].attributes["id"].value).insertAfter($('#'+moved[0].attributes["id"].value))
-    console.log(moved[0].attributes["id"].value)
   }
   if (replaced[0].attributes["id"] != undefined) {
     $("."+replaced[0].attributes["id"].value).insertAfter($('#'+replaced[0].attributes["id"].value))
@@ -100,9 +99,22 @@ function change() {
 }
 
 $("#addButtonImage").click(function () {
-  // console.log("clicked the add button")
   $('#addModal').dialog('open');
 });
+
+// let abcd;
+function arr_find_name(arr, name) {
+  let result = null;
+  arr.forEach( function(element) { 
+    // console.log("comparing " + name + " with " + element['name']);
+    // abcd=element;
+    if (name == element['name']) {
+      // console.log("!!!")
+      result = element;
+    }
+  });
+  return result;
+}
 
 function add_remove(data) {
   // if the add button is checked then add it to the website
@@ -110,10 +122,12 @@ function add_remove(data) {
     let child = $("#add_section").children()[i];
     let input = child['children'][0].attributes['id'].value
     let checked = $("#"+input).is(':checked')
+
     if (checked) {
-      console.log(input)
       let last = $("#main:last")
-      last.append("<div class='box'>this is a test</div>");
+      // console.log(input) // the name
+      let element = arr_find_name(data_[1], input);
+      last.append("<div class='box " + element['id'] + "'><a href='" + element['link'] + "'> <img class='icon' src='" +  element ['path'] +"' alt = '" + element['name']+ "'></a></div>");
     }
   }
 
@@ -155,15 +169,18 @@ $( function() {
   });
 });
 
-
+let data_;
+let test;
 function form_ajax(dat) {
   $.ajax({
     url: 'resources/add.php',
     type: 'post',
     data: dat,
     success: function(response) {
-        console.log(response);
-        $("#" + dat + "_section").html(response);
+        data_ = JSON.parse(response);
+        // console.log(response);
+        $("#" + dat + "_section").html(data_[0]);
+
     }
 });
 }
@@ -244,27 +261,42 @@ function save() {
   }
   
   let toSave = JSON.stringify({"main": main_out, "bot": bot_out})
+  // console.log(toSave)
   
   $.ajax({
     url: "resources/icons.php",
     type: "POST",
-    data: {json: toSave}
+    data: {json: toSave},
+    sucess: (data) => {
+      console.log(data);
+    }
   });
 }
+
+let data1, data2;
 
 function getIcons() {
   $.ajax({
     url: "resources/icons.php",
-    type: "GET",
+    type: "POST",
+    data: "getIcons",
     success: (data) => {
-      let theData = JSON.parse(data);
+      // console.log(data)
+      let theData = JSON.parse(JSON.parse(data));
+      console.log(data)
       let mainData = theData['main'];
       let bottomBarData = theData['bot'];
+      data1 = theData;
 
       console.log(mainData);
       console.log(bottomBarData);
 
-      // Whatever else here
+      // main page:
+
+
+      // bottom bar:
+
+      
     }
   });
 }
@@ -307,7 +339,7 @@ $(document).ready(function() {
   });
 
   // Save the icon positions every 5 seconds
-  setInterval(function(){save();}, 5000);
+  // setInterval(function(){save();}, 5000);
 
 
   // add_ajax();

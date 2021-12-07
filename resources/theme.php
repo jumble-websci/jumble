@@ -4,7 +4,7 @@ session_start();
 
 $dbhost = "localhost";
 $dbusername = "root";
-$dbpassword = "wordpass";
+$dbpassword = "";
 $dbname = "jumble";
 
 $db = new PDO("mysql:host=$dbhost;dbname=$dbname","$dbusername","$dbpassword");
