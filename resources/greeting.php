@@ -2,7 +2,7 @@
 session_start(); 
 $dbhost = "localhost";
 $dbusername = "root";
-$dbpassword = "wordpass";
+$dbpassword = "";
 $dbname = "jumble";
 
 try {
