@@ -116,6 +116,16 @@ function arr_find_name(arr, name) {
   return result;
 }
 
+function arr_find_id(arr, id) {
+  let result = null;
+  arr.forEach( function(element) {
+    if (id == element['id']) {
+      result = element;
+    }
+  });
+  return result;
+}
+
 function add_remove(data) {
   // if the add button is checked then add it to the website
   for (i = 0; i < $("#add_section").children()['length']; i++) {
@@ -132,7 +142,9 @@ function add_remove(data) {
   }
 
   for (let child in $("#remove_section").children()) {
-
+    let child = $("#remove_section").children()[i];
+    let input = child['children'][0].attributes['id'].value
+    let checked = $("#"+input).is(':checked')
   }
 }
 
@@ -189,9 +201,38 @@ let remove_clicked = false;
 
 $("#check_remove").click( function() {
     if (!remove_clicked) {
-      // remove_ajax();
-      form_ajax("remove")
-      remove_clicked = true;
+      arr = [];
+      for (let i = 0; i < $("#main").children()['length']; i++) {
+        let element = $("#main").children()[i];
+        arr.push(element.classList[1]);
+      };
+      let out = "";
+      let i = 0;
+      arr = [...new Set(arr)];
+
+      while (i < arr.length) {
+        let element = arr[i];
+        let el = arr_find_id(data_[1], element);
+        if (element === 'group') {
+          i += 2;
+          continue;
+        }
+        
+        out += '<div class="el-checkbox">';
+          out +='<input type="checkbox" id="' + el["name"] +'" value="option">';
+          out +='<label class="el-checkbox-style" for="' + el["name"] + '"></label>';
+          out +='<span class="margin-r"> ' + el["name"] + '</span>';
+        out +='</div>';
+        
+        // console.log(element);
+        i++;
+      }
+      if (out === "") {
+        out = "<p> No icons present!</p>";
+      }
+      $("#remove_section").html(out);
+
+      // remove_clicked = true;
     }
 
 
@@ -274,7 +315,7 @@ function save() {
 }
 
 let data1, data2;
-
+let group_num = 1;
 function getIcons() {
   $.ajax({
     url: "resources/icons.php",
@@ -292,7 +333,54 @@ function getIcons() {
       console.log(bottomBarData);
 
       // main page:
+      main_out = "";
+      // arr.forEach( function(element) {
+      //   if (id === element['id']) {
+      //     result = element;
+      //   }
+      // });
+      mainData.forEach( function(el) {
+        // main_out +=
+        let element = arr_find_id(data_[1], el);
+        
+        if (el === '1') {
+          main_out += '<div class="box 1"> <span class="none"></span></div>';
+        } else if (el === '99') {
+          main_out += '<div id="group' + group_num + '" class="box 99 group-class">';
+          main_out += '<span class="none"></span>';
+          main_out += "</div>";
 
+          main_out += '<div class="group' + group_num + ' group newline hide">';
+          main_out += 'Something'; //eventually will populate with actual groups
+          main_out += '</div>';
+          main_out += '<div class="group' + group_num++ + ' newline hide"></div>';
+        } else {
+          main_out += "<div class='box " + element['id'] + "'><a href='" + element['link'] + "'> <img class='icon' src='" +  element ['path'] + "' alt = '" + element['name']+ "'></a></div>"
+        }
+        
+       });
+      $("#main").html(main_out);
+      $( ".sort" ).sortable({
+        start: function(event, ui){
+          ui.item.addClass('noclick');
+          collapse_groups();
+          },
+          stop: function (event, ui) {
+            test1 = event;
+            test2 = ui;
+            var moved = ui.item,
+                replaced = ui.item.prev();
+            
+            // if replaced.length === 0 then the item has been pushed to the top of the list
+            // in this case we need the .next() sibling
+            if (replaced.length == 0) {
+                replaced = ui.item.next();
+            }
+            if (!(moved[0].attributes["id"] == undefined && replaced[0].attributes["id"] == undefined)) {
+              group_move(moved, replaced);
+            }
+        }
+      });
 
       // bottom bar:
 
@@ -302,6 +390,8 @@ function getIcons() {
 }
 
 $(document).ready(function() {
+  form_ajax("add")
+
   change();
   // Get default theme
   $.ajax({
