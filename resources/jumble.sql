@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 06, 2021 at 10:39 AM
+-- Generation Time: Dec 07, 2021 at 12:44 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -66,16 +66,18 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `fname` varchar(255) DEFAULT NULL,
-  `lname` varchar(255) DEFAULT NULL
+  `lname` varchar(255) DEFAULT NULL,
+  `layout` varchar(511) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `password`, `fname`, `lname`) VALUES
-(1, 'harter2@rpi.edu', '$2y$10$fkCD0jl3NZvMUkKplODM9uZ8IElkMs02/JnII1pyccf25/0qLwvoS', 'Russell', 'Harter'),
-(2, 'sejqueen@gmail.com', '$2y$10$OE3uEkZ5qV2/sp2kvCHOq.l8KsjDahQ37Yy7B5HxpOyJtWTMhZTyK', 'Sejuani', 'Winter\'s Claw');
+INSERT INTO `users` (`id`, `email`, `password`, `fname`, `lname`, `layout`) VALUES
+(1, 'harter2@rpi.edu', '$2y$10$fkCD0jl3NZvMUkKplODM9uZ8IElkMs02/JnII1pyccf25/0qLwvoS', 'Russell', 'Harter', ''),
+(2, 'sejqueen@gmail.com', '$2y$10$OE3uEkZ5qV2/sp2kvCHOq.l8KsjDahQ37Yy7B5HxpOyJtWTMhZTyK', 'Sejuani', 'Winter\'s Claw', ''),
+(3, 'a@a.a', '$2y$10$Jp/7edO/t.U2Xy1EE4USQesG/gALo6BtIeudgPtXXkU76lX9Pgboa', NULL, NULL, '{\"main\":[\"6\",\"1\",\"4\",\"14\",\"9\",\"12\",\"99\",\"8\",\"2\",\"10\",\"7\",\"5\",\"99\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"3\"],\"bot\":[\"box\",\"box\",\"box\",\"box\",\"box\",\"box\",\"box\",\"box\",\"box\",\"box\",\"box\",\"box\"]}');
 
 --
 -- Indexes for dumped tables
@@ -107,7 +109,7 @@ ALTER TABLE `icons`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -339,7 +339,10 @@ function getIcons() {
     success: (data) => {
       // console.log(data)
       let theData = JSON.parse(JSON.parse(data));
-      console.log(data)
+      if (Object.keys(theData).length === 0) {
+        return;
+      }
+      // console.log(data)
       let mainData = theData['main'];
       let bottomBarData = theData['bot'];
       data1 = theData;
