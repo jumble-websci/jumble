@@ -143,21 +143,16 @@ function add_remove(data) {
       }
     }
   }
-  if ($("check_remove").is(":checked")) {
-    for (let i in $("#remove_section").children()) {
+  if ($("#check_remove").is(":checked")) {
+    for (i = 0; i < $("#remove_section").children()['length']; i++) {
       let child = $("#remove_section").children()[i];
       let input = child['children'][0].attributes['id'].value
       let checked = $("#"+input).is(':checked')
 
       if (checked) {
-        console.log(input);
-        
         let element = arr_find_name(data_[1], input.slice(0, -7));
-        console.log(element)
-        // $(".box."+element['id']).hide('fast')
         $(".box."+element['id']).remove();
-
-        // $( "#remove_selection" ).children()[i].prop( "checked", false );
+        check_remove();
       }
     }
   }
@@ -217,6 +212,11 @@ function form_ajax(dat) {
 let remove_clicked = false;
 
 $("#check_remove").click( function() {
+  check_remove();
+});
+  
+  
+function check_remove() {
     if (!remove_clicked) {
       arr = [];
       for (let i = 0; i < $("#main").children()['length']; i++) {
@@ -259,8 +259,7 @@ $("#check_remove").click( function() {
   } else {
     $('#remove').hide('fast');
   }
-
-});
+}
 
 
 let add_clicked = false;
