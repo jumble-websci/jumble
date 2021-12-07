@@ -423,9 +423,9 @@ function getIcons() {
       bottomBarData.forEach( function(el) {
         let element = arr_find_id(data_[1], el);
         if (el === '1') {
-          bot_out += '<div class="box 1"> <span class="none"></span></div>';
+          bot_out += '<div class="box-small 1"> <span class="none"></span></div>';
         } else {
-          bot_out += "<div class='box " + element['id'] + "'><a href='" + element['link'] + "'> <img class='icon' src='" +  element ['path'] + "' alt = '" + element['name']+ "'></a></div>"
+          bot_out += "<div class='box-small " + element['id'] + "'><a href='" + element['link'] + "'> <img class='icon' src='" +  element ['path'] + "' alt = '" + element['name']+ "'></a></div>"
         }
       });
 
