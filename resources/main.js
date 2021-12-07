@@ -128,24 +128,41 @@ function arr_find_id(arr, id) {
 
 function add_remove(data) {
   // if the add button is checked then add it to the website
-  for (i = 0; i < $("#add_section").children()['length']; i++) {
-    let child = $("#add_section").children()[i];
-    let input = child['children'][0].attributes['id'].value
-    let checked = $("#"+input).is(':checked')
+  if ($('#check_add').is(":checked")) {
+    for (i = 0; i < $("#add_section").children()['length']; i++) {
+      let child = $("#add_section").children()[i];
+      let input = child['children'][0].attributes['id'].value
+      let checked = $("#"+input).is(':checked')
 
-    if (checked) {
-      let last = $("#main:last")
-      // console.log(input) // the name
-      let element = arr_find_name(data_[1], input);
-      last.append("<div class='box " + element['id'] + "'><a href='" + element['link'] + "'> <img class='icon' src='" +  element ['path'] +"' alt = '" + element['name']+ "'></a></div>");
+      if (checked) {
+        let last = $("#main:last")
+        // console.log(input) // the name
+        let element = arr_find_name(data_[1], input);
+        last.append("<div class='box " + element['id'] + "'><a href='" + element['link'] + "'> <img class='icon' src='" +  element ['path'] +"' alt = '" + element['name']+ "'></a></div>");
+        // $( "#add_selection" ).children()[i].prop( "checked", false );
+      }
+    }
+  }
+  if ($("check_remove").is(":checked")) {
+    for (let i in $("#remove_section").children()) {
+      let child = $("#remove_section").children()[i];
+      let input = child['children'][0].attributes['id'].value
+      let checked = $("#"+input).is(':checked')
+
+      if (checked) {
+        console.log(input);
+        
+        let element = arr_find_name(data_[1], input.slice(0, -7));
+        console.log(element)
+        // $(".box."+element['id']).hide('fast')
+        $(".box."+element['id']).remove();
+
+        // $( "#remove_selection" ).children()[i].prop( "checked", false );
+      }
     }
   }
 
-  for (let child in $("#remove_section").children()) {
-    let child = $("#remove_section").children()[i];
-    let input = child['children'][0].attributes['id'].value
-    let checked = $("#"+input).is(':checked')
-  }
+  $( "#addModal" ).dialog( "close" );
 }
 
 $( function() {
@@ -219,12 +236,11 @@ $("#check_remove").click( function() {
         }
         
         out += '<div class="el-checkbox">';
-          out +='<input type="checkbox" id="' + el["name"] +'" value="option">';
-          out +='<label class="el-checkbox-style" for="' + el["name"] + '"></label>';
+          out +='<input type="checkbox" id="' + el["name"] +'_remove" value="option">';
+          out +='<label class="el-checkbox-style" for="' + el["name"] + '_remove"></label>';
           out +='<span class="margin-r"> ' + el["name"] + '</span>';
         out +='</div>';
         
-        // console.log(element);
         i++;
       }
       if (out === "") {
@@ -429,7 +445,7 @@ $(document).ready(function() {
   });
 
   // Save the icon positions every 5 seconds
-  // setInterval(function(){save();}, 5000);
+  setInterval(function(){save();}, 5000);
 
 
   // add_ajax();
