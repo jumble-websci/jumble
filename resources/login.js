@@ -47,7 +47,7 @@ function callLogin() {
         if (data.substring(0, 5) == "Error") {
           alert(data);
         } else {
-          window.location = "index.html";
+          window.location = "main.html";
         }
       },
       error: () => {
