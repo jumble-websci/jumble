@@ -4,7 +4,7 @@ session_start();
 
 $dbhost = "localhost";
 $dbusername = "root";
-$dbpassword = "wordpass";
+$dbpassword = "Oneplusone=2";
 $dbname = "jumble";
 
 try {

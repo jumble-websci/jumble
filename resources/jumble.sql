@@ -53,6 +53,9 @@ INSERT INTO `icons` (`id`, `name`, `link`, `path`) VALUES
 (12, 'tiktok', 'https://www.tiktok.com', 'resources/images/tiktok.png'),
 (13, 'twitter', 'https://www.twitter.com', 'resources/images/twitter.png'),
 (14, 'youtube', 'https://www.youtube.com', 'resources/images/youtube.png'),
+(15,'webex', 'https://www.webex.com/', 'resources/images/Webex.png'),
+(16,'blackboard', 'https://lms.rpi.edu/', 'resources/images/blackboard.png'),
+(17,'twitch', 'https://www.twitch.tv/', 'resources/images/twitch.jpg'),
 (99, 'group', '', '');
 
 -- --------------------------------------------------------
