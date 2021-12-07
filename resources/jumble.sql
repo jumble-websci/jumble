@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Dec 06, 2021 at 10:39 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.0.13
+-- Host: 127.0.0.1
+-- Generation Time: Dec 07, 2021 at 07:29 AM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -66,16 +66,19 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `fname` varchar(255) DEFAULT NULL,
-  `lname` varchar(255) DEFAULT NULL
+  `lname` varchar(255) DEFAULT NULL,
+  `theme` int(11) NOT NULL DEFAULT 0,
+  `icons` varchar(535) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `password`, `fname`, `lname`) VALUES
-(1, 'harter2@rpi.edu', '$2y$10$fkCD0jl3NZvMUkKplODM9uZ8IElkMs02/JnII1pyccf25/0qLwvoS', 'Russell', 'Harter'),
-(2, 'sejqueen@gmail.com', '$2y$10$OE3uEkZ5qV2/sp2kvCHOq.l8KsjDahQ37Yy7B5HxpOyJtWTMhZTyK', 'Sejuani', 'Winter\'s Claw');
+INSERT INTO `users` (`id`, `email`, `password`, `fname`, `lname`, `theme`, `icons`) VALUES
+(1, 'harter2@rpi.edu', '$2y$10$fkCD0jl3NZvMUkKplODM9uZ8IElkMs02/JnII1pyccf25/0qLwvoS', 'Russell', 'Harter', 2, ''),
+(2, 'sejqueen@gmail.com', '$2y$10$OE3uEkZ5qV2/sp2kvCHOq.l8KsjDahQ37Yy7B5HxpOyJtWTMhZTyK', 'Sejuani', 'Winter\'s Claw', 2, ''),
+(3, 'coolguy@gmail.com', '$2y$10$Z9aZKOWJJ5CeJqxoCNfGc.tJJW2sSUOBvdk9dxdLEb5BluVk6h6RS', NULL, NULL, 0, '{\"main\":[\"6\",\"13\",\"1\",\"4\",\"14\",\"12\",\"9\",\"99\",\"8\",\"2\",\"10\",\"7\",\"99\",\"5\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"3\"],\"bot\":[\"11\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\",\"1\"]}');
 
 --
 -- Indexes for dumped tables
@@ -107,7 +110,7 @@ ALTER TABLE `icons`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

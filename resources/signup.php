@@ -27,6 +27,24 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $clean_email = validate($_POST['email']);
     $clean_pass = validate($_POST['password']);
 
+    // Check length of password
+    if (strlen($clean_pass) < 10) {
+        echo("Error: Password too short (min length of 10)");
+        die();
+    }
+
+    // Check length of email
+    if (strlen($clean_email) > 255) {
+        echo("Error: Please use a shorter email");
+        die();
+    }
+
+    // Check that email is an email format
+    if (!filter_var($clean_email, FILTER_VALIDATE_EMAIL)) {
+        echo("Error: Invalid Email Format");
+        die();
+    }
+
     // Double check inputs aren't empty
     if (empty($clean_email)) {
         echo("Error: Please enter an email");
@@ -50,5 +68,3 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $db->query($sql);
     die();
 }
-
-?>
