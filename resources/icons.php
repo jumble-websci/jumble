@@ -13,14 +13,14 @@ $db = new PDO("mysql:host=$dbhost;dbname=$dbname","$dbusername","$dbpassword");
 
 if (isset($_POST['getIcons'])) {
     $email = $_SESSION['email'];
-    $stmt = $db->prepare("SELECT `layout` FROM `users` WHERE `email`='$email'");
+    $stmt = $db->prepare("SELECT `icons` FROM `users` WHERE `email`='$email'");
     $stmt->execute();
     
     $iconData = $stmt->fetchAll();
-    // var_dump($iconData[0]['layout']);
-    // echo $iconData[0]['layout'];
+    // var_dump($iconData[0]['icons']);
+    // echo $iconData[0]['icons'];
     // $iconData = (($db->query("SELECT icons FROM users WHERE `email`='$email'"))->fetch())[0];
-    echo(json_encode($iconData[0]['layout']));
+    echo(json_encode($iconData[0]['icons']));
     // die();
 }
 
@@ -31,7 +31,7 @@ if (isset($_POST['json'])) {
   $email = $_SESSION['email'];
   $json = $_POST['json'];
   // $db->query("UPDATE `users` SET `icons` = '$json' WHERE `users`.`email` = '$email' ");
-  $stmt = $db->prepare("UPDATE `users` SET `layout` = '$json' WHERE `users`.`email` = '$email' ");
+  $stmt = $db->prepare("UPDATE `users` SET `icons` = '$json' WHERE `users`.`email` = '$email' ");
   $stmt->execute();
   echo "this worked";
   } catch (Exception $e) {
