@@ -25,6 +25,8 @@ $(document).ready(function() {
 
     // add_ajax();
 
+
+
 });
 
 if (true)
@@ -69,10 +71,24 @@ function hover(i){
    
 }
 
+
+
+
 //For Settings
 
+
+
+
 function Settings() {
-    document.getElementById("overlay").style.display = "block";
+  const xmlhttp = new XMLHttpRequest();
+  xmlhttp.onload = function() {
+      document.getElementById("name").innerHTML = this.responseText;
+    }
+    xmlhttp.open("GET", "resources/greeting.php",true);
+    xmlhttp.send();
+  
+  document.getElementById("overlay").style.display = "block";
+   
 }
 
 
@@ -248,4 +264,34 @@ function logout() {
       alert("There was an error connecting to the server, please try again.");
     }
   });
+}
+
+
+function callUpdate() {
+  let email = document.getElementById("email").value;
+  let fname = document.getElementById("fname").value;
+  let lname = document.getElementById("lname").value;
+    // Update
+    $.ajax({
+      url: "resources/update.php",
+      type: "POST",
+      data: { email: email, fname: fname, lname: lname },
+      success: (data) => {
+        if (data.substring(0, 5) == "Error") {
+          alert(data);
+        } else {
+          alert("Account Updated!");
+        }
+      },
+      error: () => {
+        alert("There was an error connecting to the server, please try again.");
+      }
+    });  
+
+    Settings();
+
+  document.getElementById("email").value = "";
+  document.getElementById("fname").value = "";
+  document.getElementById("lname").value = "";
+  
 }
