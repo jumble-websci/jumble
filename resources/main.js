@@ -228,7 +228,6 @@ function save() {
   let bot_out = [];
   
   let i = 0;
-  // for (i = 0; i < main.children()['length']; i++) {
   while (i < main.children()['length']) {
     main_out.push(main.children()[i].classList[1]);
     if (main.children()[i].classList.contains("group-class")) {
@@ -237,15 +236,37 @@ function save() {
     }
     i++;
   }
-  console.log(main_out)
 
   i = 0;
   while ( i <bot.children()['length']) {
     bot_out.push(bot.children()[i].classList[0]);
     i+=1;
   }
-  console.log(bot_out)
+  
+  let toSave = JSON.stringify({"main": main_out, "bot": bot_out})
+  
+  $.ajax({
+    url: "resources/icons.php",
+    type: "POST",
+    data: {json: toSave}
+  });
+}
 
+function getIcons() {
+  $.ajax({
+    url: "resources/icons.php",
+    type: "GET",
+    success: (data) => {
+      let theData = JSON.parse(data);
+      let mainData = theData['main'];
+      let bottomBarData = theData['bot'];
+
+      console.log(mainData);
+      console.log(bottomBarData);
+
+      // Whatever else here
+    }
+  });
 }
 
 $(document).ready(function() {
@@ -284,6 +305,10 @@ $(document).ready(function() {
         }
     }
   });
+
+  // Save the icon positions every 5 seconds
+  setInterval(function(){save();}, 5000);
+
 
   // add_ajax();
 
