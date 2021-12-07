@@ -348,16 +348,10 @@ function getIcons() {
       console.log(bottomBarData);
 
       // main page:
-      main_out = "";
-      // arr.forEach( function(element) {
-      //   if (id === element['id']) {
-      //     result = element;
-      //   }
-      // });
+      let main_out = "";
       mainData.forEach( function(el) {
         // main_out +=
         let element = arr_find_id(data_[1], el);
-        
         if (el === '1') {
           main_out += '<div class="box 1"> <span class="none"></span></div>';
         } else if (el === '99') {
@@ -375,6 +369,21 @@ function getIcons() {
         
        });
       $("#main").html(main_out);
+      
+
+      // bottom bar:
+      let bot_out = "";
+      bottomBarData.forEach( function(el) {
+        let element = arr_find_id(data_[1], el);
+        if (el === '1') {
+          bot_out += '<div class="box 1"> <span class="none"></span></div>';
+        } else {
+          bot_out += "<div class='box " + element['id'] + "'><a href='" + element['link'] + "'> <img class='icon' src='" +  element ['path'] + "' alt = '" + element['name']+ "'></a></div>"
+        }
+      });
+
+      $("#bottomBar .container").html(bot_out);
+
       $( ".sort" ).sortable({
         start: function(event, ui){
           ui.item.addClass('noclick');
@@ -396,17 +405,14 @@ function getIcons() {
             }
         }
       });
-
-      // bottom bar:
-
-      
     }
   });
 }
 
 $(document).ready(function() {
-  form_ajax("add")
 
+  form_ajax("add")
+  getIcons();
   change();
   // Get default theme
   $.ajax({
