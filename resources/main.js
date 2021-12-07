@@ -382,6 +382,7 @@ function getIcons() {
     success: (data) => {
       // console.log(data)
       let theData = JSON.parse(JSON.parse(data));
+      console.log(theData)
       if (Object.keys(theData).length === 0) {
         return;
       }
@@ -458,8 +459,9 @@ function getIcons() {
 $(document).ready(function() {
 
   form_ajax("add")
-  getIcons();
   change();
+  getIcons();
+  
   // Get default theme
   $.ajax({
     url: "resources/theme.php",
