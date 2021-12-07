@@ -2,7 +2,7 @@
 session_start(); 
 $dbhost = "localhost";
 $dbusername = "root";
-$dbpassword = "wordpass";
+$dbpassword = "";
 $dbname = "jumble";
 
 try {
@@ -28,10 +28,6 @@ $row = $result[0];
             $val ="Hello " . $row['fname'] . " " . $row['lname'] . "!";
         }
         echo($val);
-   
 
-// echo "this is a test";
-
-// echo (isset($_POST['add_remove']))
 
 ?>
