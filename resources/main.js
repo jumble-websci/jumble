@@ -75,17 +75,19 @@ function hover(i){
 
 
 //For Settings
-
-
-
-
-function Settings() {
+function Greeting(){
   const xmlhttp = new XMLHttpRequest();
   xmlhttp.onload = function() {
       document.getElementById("name").innerHTML = this.responseText;
     }
     xmlhttp.open("GET", "resources/greeting.php",true);
     xmlhttp.send();
+}
+
+
+
+function Settings() {
+  Greeting();
   
   document.getElementById("overlay").style.display = "block";
    
@@ -288,7 +290,7 @@ function callUpdate() {
       }
     });  
 
-    Settings();
+    Greeting();
 
   document.getElementById("email").value = "";
   document.getElementById("fname").value = "";
