@@ -3,7 +3,7 @@ session_start();
 
 $dbhost = "localhost";
 $dbusername = "root";
-$dbpassword = "Oneplusone=2";
+$dbpassword = "wordpass";
 $dbname = "jumble";
 
 try {
@@ -41,7 +41,22 @@ if (isset($_POST['email']) || isset($_POST['fname']) || isset($_POST['lname'])) 
         die();
     }
 
+    // Check lengths
+    if (strlen($clean_email) > 255) {
+        echo("Error: Please use a shorter email");
+        die();
+    }
+    if (strlen($clean_fname) > 255) {
+        echo("Error: Please use a shorter first name");
+        die();
+    }
+    if (strlen($clean_lname) > 255) {
+        echo("Error: Please use a shorter last name");
+        die();
+    }
+
     $currEmail = $_SESSION['email'];
+
     // Insert into the database
    if(!empty($clean_email)){
     $sql = "UPDATE users
