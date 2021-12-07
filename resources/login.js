@@ -32,6 +32,10 @@ function togglePass() {
   }
 }
 
+function showError(error) {
+  $(".error").html(error);
+};
+
 // Database stuff
 function callLogin() {
   let email = $("#email")[0].value;
@@ -45,7 +49,7 @@ function callLogin() {
       data: { email: email, password: password },
       success: (data) => {
         if (data.substring(0, 5) == "Error") {
-          alert(data);
+          showError(data);
         } else {
           window.location = "main.html";
         }
@@ -62,7 +66,7 @@ function callLogin() {
       data: { email: email, password: password },
       success: (data) => {
         if (data.substring(0, 5) == "Error") {
-          alert(data);
+          showError(data);
         } else {
           alert("Account made! You can login now.");
         }

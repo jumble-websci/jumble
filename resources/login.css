@@ -24,7 +24,16 @@ body{
   width: 30%;
   height: 40%;
   border-radius: 20px;
-  background-color: rgba(0,0,0,0.15);
+  background-color: rgba(0,0,0,0.25);
+}
+
+.error {
+	color: red;
+	font-family: 'Exo', sans-serif;
+	margin: auto;
+	text-align: center;
+	font-size: larger;
+	margin-top: 3%;
 }
 
 #toggleButton {
