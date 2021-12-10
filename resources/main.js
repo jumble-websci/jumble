@@ -1,142 +1,136 @@
+let group_num = 1;
+if (true) {
 
-if (true)
-{
-
-function group_move (moved, replaced) {
-  if (moved[0].attributes["id"]!= undefined) {
-    $("."+moved[0].attributes["id"].value).insertAfter($('#'+moved[0].attributes["id"].value))
+  function group_move(moved, replaced) {
+    if (moved[0].attributes["id"] != undefined) {
+      $("." + moved[0].attributes["id"].value).insertAfter($('#' + moved[0].attributes["id"].value))
+    }
+    if (replaced[0].attributes["id"] != undefined) {
+      $("." + replaced[0].attributes["id"].value).insertAfter($('#' + replaced[0].attributes["id"].value))
+    }
+    collapse_groups();
   }
-  if (replaced[0].attributes["id"] != undefined) {
-    $("."+replaced[0].attributes["id"].value).insertAfter($('#'+replaced[0].attributes["id"].value))
+
+  function collapse_groups() {
+    $(".group").hide('fast');
   }
-  collapse_groups();
-}
 
-function collapse_groups () {
-   $(".group").hide('fast');
-}
+  function changeTheme(themeNum) {
+    // Change the theme
+    $.getJSON("resources/themes.json", data => {
+      document.getElementById("homepageBody").style.backgroundColor = data["themes"][themeNum]["backgroundColor"];
+      document.getElementById("homepageBody").style.backgroundImage = data["themes"][themeNum]["backgroundImage"];
 
-function changeTheme(themeNum) {
-  // Change the theme
-  $.getJSON("resources/themes.json", data => {
-    document.getElementById("homepageBody").style.backgroundColor = data["themes"][themeNum]["backgroundColor"];
-    document.getElementById("homepageBody").style.backgroundImage = data["themes"][themeNum]["backgroundImage"];
-
-    document.getElementById("bottomBar").style.backgroundColor = data["themes"][themeNum]["barColor"];
-    document.getElementById("bottomBar").style.backgroundImage = data["themes"][themeNum]["barImage"];
-  });
-
-  // Save the theme
-  $.ajax({
-    url: "resources/theme.php",
-    type: "POST",
-    data: { num: themeNum}
-  });
-}
-
-
-function hover(i){
-  
-  $.getJSON("resources/themes.json", data => {
-    document.getElementsByClassName("theme")[i].style.backgroundImage = data["themes"][i]["backgroundImage"];
-
-   
+      document.getElementById("bottomBar").style.backgroundColor = data["themes"][themeNum]["barColor"];
+      document.getElementById("bottomBar").style.backgroundImage = data["themes"][themeNum]["barImage"];
     });
-   
-}
+
+    // Save the theme
+    $.ajax({
+      url: "resources/theme.php",
+      type: "POST",
+      data: {num: themeNum}
+    });
+  }
 
 
+  function hover(i) {
+
+    $.getJSON("resources/themes.json", data => {
+      document.getElementsByClassName("theme")[i].style.backgroundImage = data["themes"][i]["backgroundImage"];
+
+
+    });
+
+  }
 
 
 //For Settings
 
 
-
-
-function Settings() {
-  const xmlhttp = new XMLHttpRequest();
-  xmlhttp.onload = function() {
+  function Settings() {
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.onload = function () {
       document.getElementById("name").innerHTML = this.responseText;
     }
-    xmlhttp.open("GET", "resources/greeting.php",true);
+    xmlhttp.open("GET", "resources/greeting.php", true);
     xmlhttp.send();
-  
-  document.getElementById("overlay").style.display = "block";
-   
-}
+
+    document.getElementById("overlay").style.display = "block";
+
+  }
 
 
-function off() {
+  function off() {
     document.getElementById("overlay").style.display = "none";
-}
-
-function hideform() {
-  document.getElementById("info").style.display = "none";
-}
-
-function showform() {
-  document.getElementById("info").style.display = "block";
-}
-
-
-$(document).on('click', 'body > .ui-widget-overlay', function(){
-  $("#addModal").dialog("close");
-  return false;
-});
-
-
-$(".group-class").click(function(){
-  if ($(this).hasClass('noclick')) {
-    $(this).removeClass('noclick');
   }
-  else {
-    $(this).find('.ui-icon').toggleClass("ui-icon-minusthick").toggleClass("ui-icon-plusthick");
-    $("."+$(this).attr('id')).toggle('fast');
+
+  function hideform() {
+    document.getElementById("info").style.display = "none";
   }
-});
-  
-function hideform() {
-  document.getElementById("info").style.display = "none";
-}
 
-function showform() {
-  document.getElementById("info").style.display = "block";
-}
+  function showform() {
+    document.getElementById("info").style.display = "block";
+  }
 
 
-function change() {
+  $(document).on('click', 'body > .ui-widget-overlay', function () {
+    $("#addModal").dialog("close");
+    return false;
+  });
+
+
+  $(".group-class").click(function () {
+    if ($(this).hasClass('noclick')) {
+      $(this).removeClass('noclick');
+    } else {
+      $(this).find('.ui-icon').toggleClass("ui-icon-minusthick").toggleClass("ui-icon-plusthick");
+      $("." + $(this).attr('id')).toggle('fast');
+    }
+  });
+
+  function hideform() {
+    document.getElementById("info").style.display = "none";
+  }
+
+  function showform() {
+    document.getElementById("info").style.display = "block";
+  }
+
+
+  function change() {
     $("#bottomBar").children().children().removeClass("box").addClass("box-small");
     $("#iconArea").children().children().removeClass("box-small").addClass("box");
-}
+  }
 
-}
 
-$("#addButtonImage").click(function () {
-  $('#addModal').dialog('open');
-});
+  $("#addButtonImage").click(function () {
+    $('#addModal').dialog('open');
+  });
 
 // let abcd;
-function arr_find_name(arr, name) {
-  let result = null;
-  arr.forEach( function(element) { 
-    // console.log("comparing " + name + " with " + element['name']);
-    // abcd=element;
-    if (name == element['name']) {
-      // console.log("!!!")
-      result = element;
-    }
-  });
-  return result;
-}
+  function arr_find_name(arr, name) {
+    let result = null;
+    arr.forEach(function (element) {
+      // console.log("comparing " + name + " with " + element['name']);
+      // abcd=element;
+      if (name == element['name']) {
+        // console.log("!!!")
+        result = element;
+      }
+    });
+    return result;
+  }
 
-function arr_find_id(arr, id) {
-  let result = null;
-  arr.forEach( function(element) {
-    if (id == element['id']) {
-      result = element;
-    }
-  });
-  return result;
+  function arr_find_id(arr, id) {
+    let result = null;
+    arr.forEach(function (element) {
+      if (id == element['id']) {
+        result = element;
+      }
+    });
+    return result;
+  }
 }
 
 let el, el_len;
@@ -145,71 +139,87 @@ function add_remove(data) {
   // if the add button is checked then add it to the website
   let checked = false, group_checked = false;
   if ($('#check_add').is(":checked")) {
-    el = $("#add_section");
+    el = $("#add_section")[0];
     el_len = el.children['length'];
     let add = [];
-    for (let i = 0; i < el_len; i++) {
-      if (i === el_len-1) {
-        console.log("group")
-        group_checked = true;
-        let group_fieldset = $("#add_section fieldset")[0]
-        // console.log(group_fieldset)
-        for (let j = 0; j < group_fieldset.children['length']; j++) {
-          // console.log(group_fieldset.children[j])
-          // $("#reddit_group").is(':checked')
-          let child = group_fieldset.children[j];
-          let input = child['children'][0].attributes['id'].value
-          if($("#"+input).is(':checked')) {
-            group_checked = true;
-            add.push([input, child]);
-          }
-          // console.log(checked)
-
-        }
-        if (group_checked) {
-          // console.log("group checked")
-          console.log(add);
-          let last = $("#main:last");
-          temp_arr = add;
-          for (let element_index in add) {
-            let element = add[element_index];
+    for (let i = 0; i < el_len-1; i++) {
+      if (i === el_len-2) {
+        checked = $("#group").is(':checked')
+        if (checked) {
+          console.log("group checked")
+          let group_fieldset = $("#add_section fieldset")[0]
+          // console.log(group_fieldset)
+          for (let j = 0; j < group_fieldset.children['length']; j++) {
+            // console.log(group_fieldset.children[j])
+            // $("#reddit_group").is(':checked')
+            let child = group_fieldset.children[j];
+            let input = child['children'][0].attributes['id'].value
+            let info = data_[1][j]
+            if ($("#" + input).is(':checked')) {
+              group_checked = true;
+              add.push([info, child]);
+            }
+            // console.log(checked)
 
           }
-          // let element = arr_find_name(data_[1], );
-          let out = "";
+          if (group_checked) {
+            // console.log("group checked")
+            console.log(add);
+            let last = $("#main:last");
+            temp_arr = add;
+            let out = "";
+            out += "<div id='group" + group_num + "' class='box 99 group-class'>";
+            out += "<span class='none'></span>";
+            out += "</div>";
 
-          last.append(out);
+            out += "<div class='group" + group_num + " group newline hide'>";
+            for (let element_index in add) {
+              let element = add[element_index];
+              // console.log(data_[1][])
+              // <a href="https://slack.com" class="10">
+              //  <img class="icon" src="resources/images/slack.png" alt="slack">
+              // </a>
+
+              out += '<a href="' + element['link'] + '" class="' + element['id'] + '">';
+              if (element['name'] === "blank_space") {
+                out += '<span class="none 1"></span>';
+              } else {
+                out += '<img class="icon" src="' + element['path'] + '" alt="' + element['name'] + '">';
+              }
+              out += '</a>';
+
+            }
+            out += "</div>";
+            out += "<div class='group" + group_num++ + " newline hide'></div>";
+            last.append(out);
+          }
         }
-
-        // console.log($("#add_section fieldset")[0])
-
-        // for (let group_index = 0; group_index < el_len-1; i++ ) {
-        //   console.log()
-        //   console.log(el.children()[el_len].children)
-        // }
-
-
 
       } else {
-        let child = $("#add_section").children()[i];
+        let child = el.children[i];
         let input = child['children'][0].attributes['id'].value
         checked = $("#"+input).is(':checked')
-      }
 
-      if (checked) {
+        if (checked) {
 
-        let last = $("#main:last")
-        // console.log(input) // the name
-        let element = arr_find_name(data_[1], input);{
-        last.append("<div class='box " + element['id'] + "'><a href='" + element['link'] + "'> <img class='icon' src='" + element ['path'] + "' alt = '" + element['name'] + "'></a></div>");
-          // $( "#add_selection" ).children()[i].prop( "checked", false );
+
+          let last = $("#main:last")
+          // console.log(input) // the name
+          // let child = $("#add_section").children()[i];
+          // let input = child['children'][0].attributes['id'].value
+          let element = arr_find_name(data_[1], input);{
+            last.append("<div class='box " + element['id'] + "'><a href='" + element['link'] + "'> <img class='icon' src='" + element ['path'] + "' alt = '" + element['name'] + "'></a></div>");
+            // $( "#add_selection" ).children()[i].prop( "checked", false );
+          }
         }
       }
+
+
 
     }
   }
   if ($("#check_remove").is(":checked")) {
-    for (i = 0; i < $("#remove_section").children()['length']; i++) {
+    for (let i = 0; i < $("#remove_section").children()['length']; i++) {
       let child = $("#remove_section").children()[i];
       let input = child['children'][0].attributes['id'].value
       let checked = $("#"+input).is(':checked')
@@ -455,7 +465,7 @@ function save() {
 }
 
 let data1, data2;
-let group_num = 1;
+
 let bot_out = " ";
 function getIcons() {
   $.ajax({
