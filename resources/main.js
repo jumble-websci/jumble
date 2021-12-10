@@ -432,7 +432,7 @@ function save() {
         // console.log(group_group.children[i]);
         contents.push(group_group.children[i].classList[0])
       }
-      let group_arr = [id, contents]
+      let group_arr = ['99', contents]
       temp.push(group_arr)
       // let arr = []
       // arr.push()
@@ -477,6 +477,7 @@ function getIcons() {
     success: (data) => {
       // console.log(data)
       let theData = JSON.parse(JSON.parse(data));
+      console.log("parsed data")
       console.log(theData)
       if (Object.keys(theData).length === 0) {
         return;
@@ -486,6 +487,7 @@ function getIcons() {
       let bottomBarData = theData['bot'];
       data1 = theData;
 
+      console.log("main data and bottom bar data:")
       console.log(mainData);
       console.log(bottomBarData);
 
@@ -493,16 +495,19 @@ function getIcons() {
       let main_out = "";
       mainData.forEach( function(el) {
         // main_out +=
-        let element = arr_find_id(data_[1], el);
-        if (el === '1') {
+        // console.log(el)
+        let id = el[0];
+        let element = arr_find_id(data_[1], id);
+        if (id === '1') {
           main_out += '<div class="box 1"> <span class="none"></span></div>';
-        } else if (el === '99') {
+        } else if (id === '99') {
           main_out += '<div id="group' + group_num + '" class="box 99 group-class">';
           main_out += '<span class="none"></span>';
           main_out += "</div>";
 
           main_out += '<div class="group' + group_num + ' group newline hide">';
           main_out += 'Something'; //eventually will populate with actual groups
+          // console.log()
           main_out += '</div>';
           main_out += '<div class="group' + group_num++ + ' newline hide"></div>';
         } else {
@@ -524,7 +529,7 @@ function getIcons() {
         }
       });
 
-      $("#bottomBar .container").html(bot_out);
+      // $("#bottomBar .container").html(bot_out);
 
       addSort();
     }
