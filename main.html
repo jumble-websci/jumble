@@ -7,8 +7,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="resources/style.css">
   <link rel="stylesheet" href="resources/checkbox.css">
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js" defer></script>
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js" defer></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> -->
@@ -104,7 +104,7 @@
 
     <!-- Settings image link, not sure how exactly this is going to be coded but this is temporary -->
     <a onclick="Settings()"><img src="resources/images/profile.png" alt="Settings" id="settingsLink"></a>
-
+<null>
     <!-- This is where the icon stuff will go -->
     <div id="iconArea" onclick="off()">
       <div id="main" class = "container sort">
@@ -141,11 +141,11 @@
             <img class="icon" src="https://www.redditinc.com/assets/images/site/reddit-logo.png" alt="reddit">
           </a>
         </div>
-        <div id="group1" class="box 99 group-class">
-          <img class="icon" src="resources/images/hbo.png" alt="hbo">
-        </div>
-        <div class="group1 group newline hide">Test area 1 </div>
-        <div class="group1 newline hide"></div>
+<!--        <div id="group1" class="box 99 group-class">-->
+<!--          <img class="icon" src="resources/images/hbo.png" alt="hbo">-->
+<!--        </div>-->
+<!--        <div class="group1 group newline hide">Test area 1 </div>-->
+<!--        <div class="group1 newline hide"></div>-->
         <div class="box 8">
           <a href="https://pinterest.com">
             <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/0/08/Pinterest-logo.png" alt="pintereset">
@@ -171,7 +171,7 @@
             <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/HBO_logo.svg/422px-HBO_logo.svg.png" alt="hbo">
           </a>
         </div>
-        <div id="group2" class="box 99 group-class">
+        <div id="group2" class="box 99 group-class" onclick="group_click('group2')">
           <span>test group 2</span>
           <span class="none"></span>
         </div>

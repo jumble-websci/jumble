@@ -1,11 +1,10 @@
 let group_num = 1;
-if (true) {
 
   function group_move(moved, replaced) {
-    if (moved[0].attributes["id"] != undefined) {
+    if (moved[0].attributes["id"] !== undefined) {
       $("." + moved[0].attributes["id"].value).insertAfter($('#' + moved[0].attributes["id"].value))
     }
-    if (replaced[0].attributes["id"] != undefined) {
+    if (replaced[0].attributes["id"] !== undefined) {
       $("." + replaced[0].attributes["id"].value).insertAfter($('#' + replaced[0].attributes["id"].value))
     }
     collapse_groups();
@@ -65,13 +64,6 @@ if (true) {
     document.getElementById("overlay").style.display = "none";
   }
 
-  function hideform() {
-    document.getElementById("info").style.display = "none";
-  }
-
-  function showform() {
-    document.getElementById("info").style.display = "block";
-  }
 
 
   $(document).on('click', 'body > .ui-widget-overlay', function () {
@@ -79,15 +71,16 @@ if (true) {
     return false;
   });
 
-
-  $(".group-class").click(function () {
-    if ($(this).hasClass('noclick')) {
-      $(this).removeClass('noclick');
-    } else {
-      $(this).find('.ui-icon').toggleClass("ui-icon-minusthick").toggleClass("ui-icon-plusthick");
-      $("." + $(this).attr('id')).toggle('fast');
+  function group_click(id) {
+    let el=$("#"+id)
+    if (el.hasClass('noclick')) {
+      el.removeClass('noclick');
     }
-  });
+    else {
+      $("."+id).toggle('fast')
+    }
+
+  }
 
   function hideform() {
     document.getElementById("info").style.display = "none";
@@ -108,14 +101,10 @@ if (true) {
     $('#addModal').dialog('open');
   });
 
-// let abcd;
   function arr_find_name(arr, name) {
     let result = null;
     arr.forEach(function (element) {
-      // console.log("comparing " + name + " with " + element['name']);
-      // abcd=element;
-      if (name == element['name']) {
-        // console.log("!!!")
+      if (name === element['name']) {
         result = element;
       }
     });
@@ -125,13 +114,13 @@ if (true) {
   function arr_find_id(arr, id) {
     let result = null;
     arr.forEach(function (element) {
-      if (id == element['id']) {
+      if (id === element['id']) {
         result = element;
       }
     });
     return result;
   }
-}
+
 
 let el, el_len;
 let temp_arr;
@@ -151,7 +140,6 @@ function add_remove(data) {
           // console.log(group_fieldset)
           for (let j = 0; j < group_fieldset.children['length']; j++) {
             // console.log(group_fieldset.children[j])
-            // $("#reddit_group").is(':checked')
             let child = group_fieldset.children[j];
             let input = child['children'][0].attributes['id'].value
             let info = data_[1][j]
@@ -168,17 +156,13 @@ function add_remove(data) {
             let last = $("#main:last");
             temp_arr = add;
             let out = "";
-            out += "<div id='group" + group_num + "' class='box 99 group-class'>";
+            out += "<div id='group" + group_num + "' class='box 99 group-class' onclick='group_click(\"group" + group_num +"\")'>";
             out += "<span class='none'></span>";
             out += "</div>";
 
             out += "<div class='group" + group_num + " group newline hide'>";
             for (let element_index in add) {
-              let element = add[element_index];
-              // console.log(data_[1][])
-              // <a href="https://slack.com" class="10">
-              //  <img class="icon" src="resources/images/slack.png" alt="slack">
-              // </a>
+              let element = add[element_index][0];
 
               out += '<a href="' + element['link'] + '" class="' + element['id'] + '">';
               if (element['name'] === "blank_space") {
@@ -204,12 +188,8 @@ function add_remove(data) {
 
 
           let last = $("#main:last")
-          // console.log(input) // the name
-          // let child = $("#add_section").children()[i];
-          // let input = child['children'][0].attributes['id'].value
           let element = arr_find_name(data_[1], input);{
             last.append("<div class='box " + element['id'] + "'><a href='" + element['link'] + "'> <img class='icon' src='" + element ['path'] + "' alt = '" + element['name'] + "'></a></div>");
-            // $( "#add_selection" ).children()[i].prop( "checked", false );
           }
         }
       }
@@ -276,7 +256,6 @@ function form_ajax(dat) {
     data: dat,
     success: function(response) {
         data_ = JSON.parse(response);
-        // console.log(response);
         $("#" + dat + "_section").html(data_[0]);
 
     }
@@ -327,7 +306,6 @@ function check_remove() {
 
 
   let checked = $('#check_remove').is(":checked")
-  // console.log(checked)
   if (checked) { // if the checkbox has been checked, show the fieldset with what to remove (build this from the page)
     $("#remove").show('fast');
   } else {
@@ -428,6 +406,8 @@ function callUpdate() {
   document.getElementById("lname").value = "";
   
 }
+
+let temp;
 function save() {
   let main = $("#main");
   let bot = $("#bottomBar .container");
@@ -437,10 +417,30 @@ function save() {
   
   let i = 0;
   while (i < main.children()['length']) {
-    main_out.push(main.children()[i].classList[1]);
+
     if (main.children()[i].classList.contains("group-class")) {
         // skip the next two things
-        i += 2;
+        // let temp = [];
+      let group_box = main.children()[i]
+      let group_group = main.children()[i+1]
+      let group_newline = main.children()[i+2]
+      temp = [group_box, group_group, group_newline]
+
+      let id = group_box.attributes['id'].value
+      let contents = []
+      for (let i = 0; i < group_group.children['length']; i++) {
+        // console.log(group_group.children[i]);
+        contents.push(group_group.children[i].classList[0])
+      }
+      let group_arr = [id, contents]
+      temp.push(group_arr)
+      // let arr = []
+      // arr.push()
+      // console.log(group_arr)
+      main_out.push(group_arr)
+      i += 2
+    } else {
+      main_out.push([main.children()[i].classList[1]]);
     }
     i++;
   }
@@ -452,7 +452,6 @@ function save() {
   }
   
   let toSave = JSON.stringify({"main": main_out, "bot": bot_out})
-  // console.log(toSave)
   
   $.ajax({
     url: "resources/icons.php",
@@ -524,37 +523,40 @@ function getIcons() {
 
       $("#bottomBar .container").html(bot_out);
 
-      $( ".sort" ).sortable({
-        start: function(event, ui){
-          ui.item.addClass('noclick');
-          collapse_groups();
-          },
-          stop: function (event, ui) {
-            test1 = event;
-            test2 = ui;
-            var moved = ui.item,
-                replaced = ui.item.prev();
-            
-            // if replaced.length === 0 then the item has been pushed to the top of the list
-            // in this case we need the .next() sibling
-            if (replaced.length == 0) {
-                replaced = ui.item.next();
-            }
-            if (!(moved[0].attributes["id"] == undefined && replaced[0].attributes["id"] == undefined)) {
-              group_move(moved, replaced);
-            }
-        }
-      });
+      addSort();
     }
   });
 }
+function addSort() {
+  // Moving groups around
+  $( ".sort" ).sortable({
+    start: function(event, ui){
+      ui.item.addClass('noclick');
+      collapse_groups();
+    },
+    stop: function (event, ui) {
+      // ui.item.removeClass('noclick')
 
-$(document).ready(function() {
+      let moved = ui.item,
+          replaced = ui.item.prev();
+
+      // if replaced.length === 0 then the item has been pushed to the top of the list
+      // in this case we need the .next() sibling
+      if (replaced.length === 0) {
+        replaced = ui.item.next();
+      }
+      if (!(moved[0].attributes["id"] === undefined && replaced[0].attributes["id"] === undefined)) {
+        group_move(moved, replaced);
+      }
+    }
+  });
+}
+function ready() {
 
   form_ajax("add")
   change();
   // getIcons();
-  
+
   // Get default theme
   $.ajax({
     url: "resources/theme.php",
@@ -567,34 +569,16 @@ $(document).ready(function() {
     }
   });
 
-  // Moving groups around
-  $( ".sort" ).sortable({
-    start: function(event, ui){
-      ui.item.addClass('noclick');
-      collapse_groups();
-      },
-      stop: function (event, ui) {
-        test1 = event;
-        test2 = ui;
-        var moved = ui.item,
-            replaced = ui.item.prev();
-        
-        // if replaced.length === 0 then the item has been pushed to the top of the list
-        // in this case we need the .next() sibling
-        if (replaced.length == 0) {
-            replaced = ui.item.next();
-        }
-        if (!(moved[0].attributes["id"] == undefined && replaced[0].attributes["id"] == undefined)) {
-          group_move(moved, replaced);
-        }
-    }
-  });
+  addSort()
 
   // Save the icon positions every 5 seconds
-  // setInterval(function(){save();}, 5000);
+  setInterval(function(){save();}, 5000);
 
 
   // add_ajax();
+}
+$(document).ready(function() {
+  ready();
 
 });
 
