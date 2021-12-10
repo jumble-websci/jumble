@@ -10,7 +10,6 @@ function group_move (moved, replaced) {
     $("."+replaced[0].attributes["id"].value).insertAfter($('#'+replaced[0].attributes["id"].value))
   }
   collapse_groups();
-
 }
 
 function collapse_groups () {
@@ -139,7 +138,9 @@ function arr_find_id(arr, id) {
   });
   return result;
 }
+
 let el, el_len;
+let temp_arr;
 function add_remove(data) {
   // if the add button is checked then add it to the website
   let checked = false, group_checked = false;
@@ -159,9 +160,8 @@ function add_remove(data) {
           let child = group_fieldset.children[j];
           let input = child['children'][0].attributes['id'].value
           if($("#"+input).is(':checked')) {
-            temp = [input, child];
             group_checked = true;
-            add.push(temp);
+            add.push([input, child]);
           }
           // console.log(checked)
 
@@ -170,8 +170,14 @@ function add_remove(data) {
           // console.log("group checked")
           console.log(add);
           let last = $("#main:last");
+          temp_arr = add;
+          for (let element_index in add) {
+            let element = add[element_index];
+
+          }
           // let element = arr_find_name(data_[1], );
           let out = "";
+
           last.append(out);
         }
 
@@ -537,7 +543,7 @@ $(document).ready(function() {
 
   form_ajax("add")
   change();
-  getIcons();
+  // getIcons();
   
   // Get default theme
   $.ajax({
@@ -575,7 +581,7 @@ $(document).ready(function() {
   });
 
   // Save the icon positions every 5 seconds
-  setInterval(function(){save();}, 5000);
+  // setInterval(function(){save();}, 5000);
 
 
   // add_ajax();
