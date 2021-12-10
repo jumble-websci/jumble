@@ -4,7 +4,7 @@ session_start();
 
 $dbhost = "localhost";
 $dbusername = "root";
-$dbpassword = "";
+$dbpassword = "wordpass";
 $dbname = "jumble";
 
 try {
@@ -58,7 +58,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $count = count( ($db->query("SELECT * FROM users WHERE email='$clean_email'"))->fetchAll() ) != 0;
 
     if ($count != 0) { 
-        echo("Error: That email is already in use. ");
+        echo("Error: Can't create account");
         die();
     }
 
