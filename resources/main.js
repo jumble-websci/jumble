@@ -135,11 +135,8 @@ function add_remove(data) {
       if (i === el_len-2) {
         checked = $("#group").is(':checked')
         if (checked) {
-          console.log("group checked")
           let group_fieldset = $("#add_section fieldset")[0]
-          // console.log(group_fieldset)
           for (let j = 0; j < group_fieldset.children['length']; j++) {
-            // console.log(group_fieldset.children[j])
             let child = group_fieldset.children[j];
             let input = child['children'][0].attributes['id'].value
             let info = data_[1][j]
@@ -147,12 +144,8 @@ function add_remove(data) {
               group_checked = true;
               add.push([info, child]);
             }
-            // console.log(checked)
-
           }
           if (group_checked) {
-            // console.log("group checked")
-            console.log(add);
             let last = $("#main:last");
             temp_arr = add;
             let out = "";
@@ -185,8 +178,6 @@ function add_remove(data) {
         checked = $("#"+input).is(':checked')
 
         if (checked) {
-
-
           let last = $("#main:last")
           let element = arr_find_name(data_[1], input);{
             last.append("<div class='box " + element['id'] + "'><a href='" + element['link'] + "'> <img class='icon' src='" + element ['path'] + "' alt = '" + element['name'] + "'></a></div>");
@@ -205,8 +196,15 @@ function add_remove(data) {
       let checked = $("#"+input).is(':checked')
 
       if (checked) {
-        let element = arr_find_name(data_[1], input.slice(0, -7));
-        $(".box."+element['id']).remove();
+        if (input.slice(0, 5) === "group") {
+          let name = input.slice(0, -7);
+          $("."+name).remove()
+          $("#"+name).remove()
+        } else {
+          let element = arr_find_name(data_[1], input.slice(0, -7));
+          console.log(element)
+          $(".box." + element['id']).remove();
+        }
         check_remove();
       }
     }
@@ -290,16 +288,15 @@ function check_remove() {
         arr.push(element.classList[1]);
         i++;
       }
-      console.log(arr)
+
       let out = "";
       i = 0;
       arr = [...new Set(arr)];
-      console.log(arr)
 
       while (i < arr.length) {
         let element = arr[i];
         if (element[0] === '99') {
-          console.log("group")
+
           out += '<div class="el-checkbox">';
           out += `<input type="checkbox" id="group${temp_group_num}_remove" value="option">`;
           out += `<label class="el-checkbox-style" for="group${temp_group_num}_remove"></label>`;
@@ -449,14 +446,12 @@ function save() {
       let id = group_box.attributes['id'].value
       let contents = []
       for (let i = 0; i < group_group.children['length']; i++) {
-        // console.log(group_group.children[i]);
+
         contents.push(group_group.children[i].classList[0])
       }
       let group_arr = ['99', contents]
       temp.push(group_arr)
-      // let arr = []
-      // arr.push()
-      // console.log(group_arr)
+
       main_out.push(group_arr)
       i += 2
     } else {
@@ -495,47 +490,36 @@ function getIcons() {
     type: "POST",
     data: "getIcons",
     success: (data) => {
-      // console.log(data)
+
       let theData = JSON.parse(JSON.parse(data));
-      console.log("parsed data")
-      console.log(theData)
+
       if (Object.keys(theData).length === 0) {
         return;
       }
-      // console.log(data)
+
       let mainData = theData['main'];
       let bottomBarData = theData['bot'];
       data1 = theData;
 
-      console.log("main data and bottom bar data:")
-      console.log(mainData);
-      console.log(bottomBarData);
-
       // main page:
       let main_out = "";
       mainData.forEach( function(el) {
-        // main_out +=
-        // console.log(el)
         let id = el[0];
         let element = arr_find_id(data_[1], id);
         if (id === '1') {
           main_out += '<div class="box 1"> <span class="none"></span></div>';
         } else if (id === '99') {
-          console.log("group")
-          console.log(el)
           main_out += '<div id="group' + group_num + '" class="box 99 group-class" onclick="group_click(\'group'+ group_num +'\')">';
           main_out += '<span class="none"></span>';
           main_out += "</div>";
 
           main_out += '<div class="group' + group_num + ' group newline hide" >';
-          // main_out += 'Something'; //eventually will populate with actual groups
           for (let i = 0; i < el[1]['length']; i++) {
             element = arr_find_id(data_[1], el[1][i]);
             main_out += `<a class="${element['id']}" href="${element['link']}">`;
               main_out += `<img class="icon" src="${element['path']}" alt="${element['name']}">`;
             main_out += '</a>';
           }
-          // console.log()
           main_out += '</div>';
           main_out += '<div class="group' + group_num++ + ' newline hide"></div>';
         } else {
@@ -571,7 +555,6 @@ function addSort() {
       collapse_groups();
     },
     stop: function (event, ui) {
-      // ui.item.removeClass('noclick')
 
       let moved = ui.item,
           replaced = ui.item.prev();
