@@ -144,17 +144,23 @@ function add_remove(data) {
   // if the add button is checked then add it to the website
   if ($('#check_add').is(":checked")) {
     for (i = 0; i < $("#add_section").children()['length']; i++) {
-      let child = $("#add_section").children()[i];
-      let input = child['children'][0].attributes['id'].value
-      let checked = $("#"+input).is(':checked')
+      if (i === $("#add_section").children()['length']-1) {
+        console.log("group")
+      } else {
+        let child = $("#add_section").children()[i];
+        let input = child['children'][0].attributes['id'].value
+        let checked = $("#"+input).is(':checked')
 
-      if (checked) {
-        let last = $("#main:last")
-        // console.log(input) // the name
-        let element = arr_find_name(data_[1], input);
-        last.append("<div class='box " + element['id'] + "'><a href='" + element['link'] + "'> <img class='icon' src='" +  element ['path'] +"' alt = '" + element['name']+ "'></a></div>");
-        // $( "#add_selection" ).children()[i].prop( "checked", false );
+        if (checked) {
+
+          let last = $("#main:last")
+          // console.log(input) // the name
+          let element = arr_find_name(data_[1], input);
+          last.append("<div class='box " + element['id'] + "'><a href='" + element['link'] + "'> <img class='icon' src='" +  element ['path'] +"' alt = '" + element['name']+ "'></a></div>");
+          // $( "#add_selection" ).children()[i].prop( "checked", false );
+        }
       }
+
     }
   }
   if ($("#check_remove").is(":checked")) {
@@ -210,7 +216,7 @@ $( function() {
 let data_;
 let test;
 function form_ajax(dat) {
-  $.ajax({
+  return $.ajax({
     url: 'resources/add.php',
     type: 'post',
     data: dat,
@@ -232,11 +238,11 @@ $("#check_remove").click( function() {
   
 function check_remove() {
     if (!remove_clicked) {
-      arr = [];
+      let arr = [];
       for (let i = 0; i < $("#main").children()['length']; i++) {
         let element = $("#main").children()[i];
         arr.push(element.classList[1]);
-      };
+      }
       let out = "";
       let i = 0;
       arr = [...new Set(arr)];
@@ -278,8 +284,10 @@ function check_remove() {
 
 let add_clicked = false;
 $("#check_add").click( function() {
-  if (!add_clicked) {
-    form_ajax("add");
+  if (!add_clicked) { // build the checkboxes and items
+    $.when(form_ajax("add")).done(function() {
+      $("#add_section div").last().children()[1].setAttribute('onclick', 'showGroupMenu()')
+    })
     add_clicked = true;
   }
 
@@ -292,6 +300,30 @@ $("#check_add").click( function() {
 
 });
 
+
+let group_fieldset_added = false;
+function showGroupMenu() {
+  // show a new fieldset inside this one for adding stuff to the group
+  let out = "<fieldset id='group-add'>"
+  for (let index in data_[1].slice(0, -1)) {
+    // let id = data_[1][index]["id"]
+    // let link = data_[1][index]["link"]
+    let name = data_[1][index]["name"]
+    // let path = data_[1][index]["path"]
+    out += '<div class="el-checkbox">';
+      out += '<input type="checkbox" id="' + name + '_group" value="option">';
+      out += '<label class="el-checkbox-style" for="' + name + '_group"></label>';
+      out += '<span class="margin-r"> ' + name + '</span>';
+    out += '</div>';
+  }
+  out += '</fieldset>';
+  if (group_fieldset_added) {
+    $("#group-add").toggle('fast');
+  } else {
+    $("#add_section").append(out);
+    group_fieldset_added = true;
+  }
+}
 
 function logout() {
   // Logout ajax call
