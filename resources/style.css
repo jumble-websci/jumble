@@ -95,7 +95,7 @@ body {
   position:fixed;
   display: none;
   width: 34%;
-  height: 87%;
+  height: 81%;
   top: 0;
   left:0;
   right: 0;
@@ -107,18 +107,15 @@ body {
 }
 
 .field{
-  
-
   margin-top: -2%;
   text-align: center;
-  font-size: 50px;
+  font-size: 55px;
   color:black;
-  
-}
+  }
 
 
 #info{
-  top: 9%;
+  top: 10%;
   left: 46%;
   transform: translate(-50%,-50%);
   position: relative;
@@ -140,12 +137,12 @@ body {
   background-color: red;
 }
 
-.update{
+#update{
   position: absolute;
   top: 89%;
   left: 50%;
   font-size: 16px;
-  height: 40px;
+  height: 50px;
   width: 93px;
   color: bisque;
   background-color: orangered;
@@ -155,7 +152,7 @@ body {
   
 }
 
-.update:hover{
+#update:hover{
   background-color:#0b7dda;
   color:black;
   cursor: pointer;
@@ -168,11 +165,11 @@ body {
   font-weight: bold;
   border:none;
   transform: translate(-50%,-50%);
-  top:95%;
-  left: 90%;
+  top:96%;
+  left: 93%;
   text-decoration: none;
   color: rgb(59, 59, 59);
-  font-size: 35px;
+  font-size: 36px;
 }
 #sp:hover{
   color:orangered;
@@ -182,7 +179,7 @@ body {
   font-family: 'Birthstone', cursive;
   text-align: center;
   color: black;
-  font-size: 10vh;
+  font-size: 12vh;
   height: 13vh;
   position: relative;
   margin: auto;
@@ -222,16 +219,16 @@ body {
 
 #name{
   position:relative;
-  top:-7%;
+  top:-6%;
   left: -1%;
   text-align: center;
-  font-size: 34px;
+  font-size: 40px;
   color:orangered;
 }
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
-  left:39%;
+  left:41%;
   top:-4%;
   align-content: center;
   position: relative;
@@ -290,7 +287,7 @@ input{
   color: black;
   background-color: rgb(218, 218, 221);
 	border: none;
-	padding: 25px 20px;
+	padding: 32px 22px;
 	width: 102%;
   border-radius: 6px;
   display: block;

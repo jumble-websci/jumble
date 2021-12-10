@@ -76,14 +76,17 @@ function Settings() {
 
 function off() {
     document.getElementById("overlay").style.display = "none";
+    
 }
 
 function hideform() {
   document.getElementById("info").style.display = "none";
+  
 }
 
 function showform() {
   document.getElementById("info").style.display = "block";
+  
 }
 
 
@@ -105,10 +108,12 @@ $(".group-class").click(function(){
   
 function hideform() {
   document.getElementById("info").style.display = "none";
+  document.getElementById("update").style.visibility = "hidden";
 }
 
 function showform() {
   document.getElementById("info").style.display = "block";
+  document.getElementById("update").style.visibility = "visible";
 }
 
 
