@@ -139,24 +139,63 @@ function arr_find_id(arr, id) {
   });
   return result;
 }
-
+let el, el_len;
 function add_remove(data) {
   // if the add button is checked then add it to the website
+  let checked = false, group_checked = false;
   if ($('#check_add').is(":checked")) {
-    for (i = 0; i < $("#add_section").children()['length']; i++) {
-      if (i === $("#add_section").children()['length']-1) {
+    el = $("#add_section");
+    el_len = el.children['length'];
+    let add = [];
+    for (let i = 0; i < el_len; i++) {
+      if (i === el_len-1) {
         console.log("group")
+        group_checked = true;
+        let group_fieldset = $("#add_section fieldset")[0]
+        // console.log(group_fieldset)
+        for (let j = 0; j < group_fieldset.children['length']; j++) {
+          // console.log(group_fieldset.children[j])
+          // $("#reddit_group").is(':checked')
+          let child = group_fieldset.children[j];
+          let input = child['children'][0].attributes['id'].value
+          if($("#"+input).is(':checked')) {
+            temp = [input, child];
+            group_checked = true;
+            add.push(temp);
+          }
+          // console.log(checked)
+
+        }
+        if (group_checked) {
+          // console.log("group checked")
+          console.log(add);
+          let last = $("#main:last");
+          // let element = arr_find_name(data_[1], );
+          let out = "";
+          last.append(out);
+        }
+
+        // console.log($("#add_section fieldset")[0])
+
+        // for (let group_index = 0; group_index < el_len-1; i++ ) {
+        //   console.log()
+        //   console.log(el.children()[el_len].children)
+        // }
+
+
+
       } else {
         let child = $("#add_section").children()[i];
         let input = child['children'][0].attributes['id'].value
-        let checked = $("#"+input).is(':checked')
+        checked = $("#"+input).is(':checked')
+      }
 
-        if (checked) {
+      if (checked) {
 
-          let last = $("#main:last")
-          // console.log(input) // the name
-          let element = arr_find_name(data_[1], input);
-          last.append("<div class='box " + element['id'] + "'><a href='" + element['link'] + "'> <img class='icon' src='" +  element ['path'] +"' alt = '" + element['name']+ "'></a></div>");
+        let last = $("#main:last")
+        // console.log(input) // the name
+        let element = arr_find_name(data_[1], input);{
+        last.append("<div class='box " + element['id'] + "'><a href='" + element['link'] + "'> <img class='icon' src='" + element ['path'] + "' alt = '" + element['name'] + "'></a></div>");
           // $( "#add_selection" ).children()[i].prop( "checked", false );
         }
       }
@@ -214,7 +253,6 @@ $( function() {
 });
 
 let data_;
-let test;
 function form_ajax(dat) {
   return $.ajax({
     url: 'resources/add.php',
@@ -303,23 +341,29 @@ $("#check_add").click( function() {
 
 let group_fieldset_added = false;
 function showGroupMenu() {
-  // show a new fieldset inside this one for adding stuff to the group
-  let out = "<fieldset id='group-add'>"
-  for (let index in data_[1].slice(0, -1)) {
-    // let id = data_[1][index]["id"]
-    // let link = data_[1][index]["link"]
-    let name = data_[1][index]["name"]
-    // let path = data_[1][index]["path"]
-    out += '<div class="el-checkbox">';
+
+  if (group_fieldset_added) {
+    if ($("#group").is(':checked')) {
+      $("#group-add").show('fast');
+    } else {
+      $("#group-add").hide('fast');
+    }
+
+  } else {
+    // show a new fieldset inside this one for adding stuff to the group
+    let out = "<fieldset id='group-add'>"
+    for (let index in data_[1].slice(0, -1)) {
+      // let id = data_[1][index]["id"]
+      // let link = data_[1][index]["link"]
+      let name = data_[1][index]["name"]
+      // let path = data_[1][index]["path"]
+      out += '<div class="el-checkbox">';
       out += '<input type="checkbox" id="' + name + '_group" value="option">';
       out += '<label class="el-checkbox-style" for="' + name + '_group"></label>';
       out += '<span class="margin-r"> ' + name + '</span>';
-    out += '</div>';
-  }
-  out += '</fieldset>';
-  if (group_fieldset_added) {
-    $("#group-add").toggle('fast');
-  } else {
+      out += '</div>';
+    }
+    out += '</fieldset>';
     $("#add_section").append(out);
     group_fieldset_added = true;
   }
