@@ -33,7 +33,7 @@ if (isset($_POST['json'])) {
   // $db->query("UPDATE `users` SET `icons` = '$json' WHERE `users`.`email` = '$email' ");
   $stmt = $db->prepare("UPDATE `users` SET `icons` = '$json' WHERE `users`.`email` = '$email' ");
   $stmt->execute();
-  // echo "this worked";
+//   echo "this worked";
   } catch (Exception $e) {
     echo '<p class="error">Error: ' . $e->getMessage() . '</p>';
   }

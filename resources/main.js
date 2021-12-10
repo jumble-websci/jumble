@@ -456,9 +456,12 @@ function save() {
   $.ajax({
     url: "resources/icons.php",
     type: "POST",
-    data: {json: toSave},
-    sucess: (data) => {
-      console.log(data);
+    data: {'json': toSave},
+    // success: (data) => {
+    //   console.log(data);
+    // },
+    error: () => {
+      alert("There was an error")
     }
   });
 }
