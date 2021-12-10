@@ -501,12 +501,20 @@ function getIcons() {
         if (id === '1') {
           main_out += '<div class="box 1"> <span class="none"></span></div>';
         } else if (id === '99') {
-          main_out += '<div id="group' + group_num + '" class="box 99 group-class">';
+          console.log("group")
+          console.log(el)
+          main_out += '<div id="group' + group_num + '" class="box 99 group-class" onclick="group_click(\'group'+ group_num +'\')">';
           main_out += '<span class="none"></span>';
           main_out += "</div>";
 
-          main_out += '<div class="group' + group_num + ' group newline hide">';
-          main_out += 'Something'; //eventually will populate with actual groups
+          main_out += '<div class="group' + group_num + ' group newline hide" >';
+          // main_out += 'Something'; //eventually will populate with actual groups
+          for (let i = 0; i < el[1]['length']; i++) {
+            element = arr_find_id(data_[1], el[1][i]);
+            main_out += `<a class="${element['id']}" href="${element['link']}">`;
+              main_out += `<img class="icon" src="${element['path']}" alt="${element['name']}">`;
+            main_out += '</a>';
+          }
           // console.log()
           main_out += '</div>';
           main_out += '<div class="group' + group_num++ + ' newline hide"></div>';
@@ -529,7 +537,7 @@ function getIcons() {
         }
       });
 
-      // $("#bottomBar .container").html(bot_out);
+      $("#bottomBar .container").html(bot_out);
 
       addSort();
     }
@@ -563,7 +571,7 @@ function ready() {
 
   form_ajax("add")
   change();
-  // getIcons();
+  getIcons();
 
   // Get default theme
   $.ajax({
