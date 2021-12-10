@@ -1,1 +1,7 @@
 # jumble
+
+SET-UP:
+USAGE
+
+
+
