@@ -140,7 +140,7 @@ body {
   background-color: red;
 }
 
-.update{
+#update{
   position: absolute;
   top: 89%;
   left: 50%;
@@ -155,7 +155,7 @@ body {
   
 }
 
-.update:hover{
+#update:hover{
   background-color:#0b7dda;
   color:black;
   cursor: pointer;
