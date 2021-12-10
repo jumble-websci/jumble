@@ -450,6 +450,7 @@ function save() {
 
 let data1, data2;
 let group_num = 1;
+let bot_out = " ";
 function getIcons() {
   $.ajax({
     url: "resources/icons.php",
@@ -495,7 +496,7 @@ function getIcons() {
       
 
       // bottom bar:
-      let bot_out = "";
+
       bottomBarData.forEach( function(el) {
         let element = arr_find_id(data_[1], el);
         if (el === '1') {
