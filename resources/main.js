@@ -268,32 +268,52 @@ $("#check_remove").click( function() {
   check_remove();
 });
   
-  
+
 function check_remove() {
-    if (!remove_clicked) {
+    // if (!remove_clicked) {
+      let temp_group_num = 1;
       let arr = [];
-      for (let i = 0; i < $("#main").children()['length']; i++) {
-        let element = $("#main").children()[i];
-        arr.push(element.classList[1]);
-      }
-      let out = "";
       let i = 0;
+      while (i < $("#main").children()['length']) {
+      // for (let i = 0; i < $("#main").children()['length']; i++) {
+        let element = $("#main").children()[i];
+        if (element.classList[1] === "99") {
+          let temp = [];
+          temp.push(element.classList[1]);
+          // temp.push(element.nextElementSibling.classList[1]);
+          // temp.push(element.nextElementSibling.nextElementSibling.classList[1]);
+          temp.push(i)
+          i += 3
+          arr.push(temp);
+          continue;
+        }
+        arr.push(element.classList[1]);
+        i++;
+      }
+      console.log(arr)
+      let out = "";
+      i = 0;
       arr = [...new Set(arr)];
+      console.log(arr)
 
       while (i < arr.length) {
         let element = arr[i];
-        let el = arr_find_id(data_[1], element);
-        if (element === 'group') {
-          i += 2;
-          continue;
+        if (element[0] === '99') {
+          console.log("group")
+          out += '<div class="el-checkbox">';
+          out += `<input type="checkbox" id="group${temp_group_num}_remove" value="option">`;
+          out += `<label class="el-checkbox-style" for="group${temp_group_num}_remove"></label>`;
+          out += `<span class="margin-r"> group ${temp_group_num++}</span>`;
+          out += '</div>';
+        } else {
+          let el = arr_find_id(data_[1], element);
+          out += '<div class="el-checkbox">';
+          out += '<input type="checkbox" id="' + el["name"] + '_remove" value="option">';
+          out += '<label class="el-checkbox-style" for="' + el["name"] + '_remove"></label>';
+          out += '<span class="margin-r"> ' + el["name"] + '</span>';
+          out += '</div>';
+
         }
-        
-        out += '<div class="el-checkbox">';
-          out +='<input type="checkbox" id="' + el["name"] +'_remove" value="option">';
-          out +='<label class="el-checkbox-style" for="' + el["name"] + '_remove"></label>';
-          out +='<span class="margin-r"> ' + el["name"] + '</span>';
-        out +='</div>';
-        
         i++;
       }
       if (out === "") {
@@ -302,7 +322,7 @@ function check_remove() {
       $("#remove_section").html(out);
 
       // remove_clicked = true;
-    }
+    // }
 
 
   let checked = $('#check_remove').is(":checked")
@@ -568,30 +588,32 @@ function addSort() {
   });
 }
 function ready() {
+  $.when(form_ajax("add").done(function() {
 
-  form_ajax("add")
-  change();
-  getIcons();
+    change();
+    getIcons();
 
-  // Get default theme
-  $.ajax({
-    url: "resources/theme.php",
-    type: "GET",
-    success: (data) => {
-      changeTheme(data);
-    },
-    error: () => {
-      changeTheme(0);
-    }
-  });
+    // Get default theme
+    $.ajax({
+      url: "resources/theme.php",
+      type: "GET",
+      success: (data) => {
+        changeTheme(data);
+      },
+      error: () => {
+        changeTheme(0);
+      }
+    });
 
-  addSort()
+    addSort()
 
-  // Save the icon positions every 5 seconds
-  setInterval(function(){save();}, 5000);
+    // Save the icon positions every 5 seconds
+    setInterval(function(){save();}, 5000);
 
 
-  // add_ajax();
+    // add_ajax();
+  }))
+
 }
 $(document).ready(function() {
   ready();
