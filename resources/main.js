@@ -13,7 +13,7 @@ function group_move(moved, replaced) {
 function collapse_groups() {
   $(".group").hide('fast');
 }
-let test;
+
 function changeTheme(themeNum) {
   // Change the theme
   $.getJSON("resources/themes.json", data => {
@@ -148,13 +148,13 @@ function add_remove(data) {
             temp_arr = add;
             let out = "";
             out += "<div id='group" + group_num + "' class='box 99 group-class' onclick='group_click(\"group" + group_num + "\")'>";
-            out += "<span class='none'></span>";
+            // out += "<span class='none'></span>";
+            out += "<img class='icon' src='resources/images/folder.svg'>";
             out += "</div>";
 
             out += "<div class='group" + group_num + " group newline hide'>";
             for (let element_index in add) {
               let element = add[element_index][0];
-
 
               if (element['name'] === "blank_space") {
                 out += '<span class="none 1"></span>';
@@ -413,7 +413,7 @@ function callUpdate() {
   document.getElementById("lname").value = "";
 
 }
-
+let test;
 function save() {
   let main = $("#main");
   let bot = $("#bottomBar .container");
@@ -425,12 +425,17 @@ function save() {
   while (i < main.children()['length']) {
 
     if (main.children()[i].classList.contains("group-class")) {
+      // test.push(main.children()[i])
+
       let group_group = main.children()[i + 1]
+      test = group_group
       let contents = []
       for (let i = 0; i < group_group.children['length']; i++) {
         contents.push(group_group.children[i].classList[0])
       }
       let group_arr = ['99', contents]
+      // console.log(group_arr)
+      // test.push(contents)
 
       main_out.push(group_arr)
       i += 2
@@ -453,7 +458,7 @@ function save() {
 
   let toSave = JSON.stringify({ "main": main_out, "bot": bot_out })
 
-  temp = toSave;
+  // temp = toSave;
 
   $.ajax({
     url: "resources/php/icons.php",
@@ -488,6 +493,7 @@ function getIcons() {
 
       // main page:
       let main_out = "";
+      group_num = 1;
       mainData.forEach(function (el) {
         let id = el[0];
         let element = arr_find_id(data_[1], id);
