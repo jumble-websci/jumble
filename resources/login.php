@@ -83,7 +83,7 @@ if (isset($_GET['email']) && isset($_GET['password'])) {
             $_SESSION['numAttempts'] += 1;
             $attemptsLeft = 3 - $_SESSION['numAttempts'];
             $pluralWord = ($attemptsLeft == 1 ? "attempt" : "attempts");
-            echo ("Error: Incorrect Password. You have $attemptsLeft $pluralWord left before you must wait a minute to try again.");
+            echo ("Error: Incorrect credentials. You have $attemptsLeft $pluralWord left before you must wait a minute to try again.");
             die();
         }
     } else {
@@ -91,7 +91,7 @@ if (isset($_GET['email']) && isset($_GET['password'])) {
         $attemptsLeft = 3 - $_SESSION['numAttempts'];
         if ($attemptsLeft > 0) {
             $pluralWord = ($attemptsLeft == 1 ? "attempt" : "attempts");
-            echo ("Error: Incorrect Email. You have $attemptsLeft $pluralWord left before you must wait a minute to try again.");
+            echo ("Error: Incorrect credentials. You have $attemptsLeft $pluralWord left before you must wait a minute to try again.");
         } else {
             echo ("Error: More than 3 attempts. Please wait a minute to try again.");
         }
