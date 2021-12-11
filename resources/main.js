@@ -13,7 +13,7 @@ let group_num = 1;
   function collapse_groups() {
     $(".group").hide('fast');
   }
-
+let test;
   function changeTheme(themeNum) {
     // Change the theme
     $.getJSON("resources/themes.json", data => {
@@ -511,8 +511,7 @@ function getIcons() {
       data1 = data;
 
       let theData = JSON.parse(JSON.parse(data));
-
-      if (Object.keys(theData).length === 0) {
+      if (theData === undefined || theData === null) {
         return;
       }
       let mainData = theData['main'];
@@ -603,10 +602,7 @@ function ready() {
       url: "resources/theme.php",
       type: "GET",
       success: (data) => {
-        changeTheme(data);
-      },
-      error: () => {
-        changeTheme(0);
+        changeTheme( (data ? data : 0));
       }
     });
 
