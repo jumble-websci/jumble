@@ -1,9 +1,3 @@
-<?php
-session_start();
-if (isset($_SESSION['email'])) {
-?>
-
-
 <!doctype html>
 <html lang="en">
 
@@ -318,9 +312,3 @@ if (isset($_SESSION['email'])) {
 
   </div>
 </body>
-<?php
-} else {
-    header("Location: login.html");
-    exit();
-}
-?>
