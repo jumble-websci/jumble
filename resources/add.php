@@ -2,39 +2,39 @@
 
 function add() {
     try {
-        $DATABASE_HOST = 'localhost';
-        $DATABASE_USER = 'root';
-        $DATABASE_PASS = '';
-        $DATABASE_NAME = 'jumble';
+        $dbhost = 'localhost';
+        $dbusername = 'root';
+        $dbpassword = 'wordpass';
+        $dbname = 'jumble';
 
-        $dbconn = new PDO("mysql:host=$DATABASE_HOST;dbname=$DATABASE_NAME", $DATABASE_USER, $DATABASE_PASS);
+        $dbconn = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbusername, $dbpassword);
 
-        $stmt = $dbconn->prepare('SELECT name FROM icons');
+        $stmt = $dbconn->prepare('SELECT * FROM icons');
         $stmt->execute();
         $data = $stmt->fetchAll();
-
-        // echo count($data);
-        // var_dump($data);
-        // echo '<div class="">';
-
-        echo '<div class="el-checkbox">';
-                    
-            echo '<input type="checkbox" id="add_group" value="option">';
-            echo '<label class="el-checkbox-style" for="add_group"></label>';
-            echo '<span class="margin-r"> group </span>';
-        echo '</div>';
+        $out = "";
 
         for ($i = 0; $i < count($data); $i++) {
 
-            echo '<div class="el-checkbox">';
+            // echo '<div class="el-checkbox">';
+            $out .= '<div class="el-checkbox">';
                 
-                echo '<input type="checkbox" id="' . $data[$i]["name"] .'" value="option">';
-                echo '<label class="el-checkbox-style" for="' . $data[$i]["name"] .'"></label>';
-                echo '<span class="margin-r"> ' . $data[$i]["name"]. '</span>';
-            echo '</div>';
+                // echo '<input type="checkbox" id="' . $data[$i]["name"] .'" value="option">';
+                $out .='<input type="checkbox" id="' . $data[$i]["name"] .'" value="option">';
+                // echo '<label class="el-checkbox-style" for="' . $data[$i]["name"] .'"></label>';
+                $out .='<label class="el-checkbox-style" for="' . $data[$i]["name"] .'"></label>';
+                // echo '<span class="margin-r"> ' . $data[$i]["name"]. '</span>';
+                $out .='<span class="margin-r"> ' . $data[$i]["name"]. '</span>';
+            // echo '</div>';
+            $out .='</div>';
         }
 
-        // echo '</div>';
+        $test = array($out, $data);
+        echo json_encode($test);
+        // var_dump($data);
+        // echo $out;
+        // echo $test;
+        
 
     } catch (Exception $e) {
         echo '<p class="error">Error: ' . $e->getMessage() . '</p>';

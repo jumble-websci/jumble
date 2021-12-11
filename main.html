@@ -7,8 +7,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="resources/style.css">
   <link rel="stylesheet" href="resources/checkbox.css">
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js" defer></script>
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js" defer></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> -->
@@ -73,8 +73,8 @@
       id="addButtonImage"></a>
 
     <div id="addModal">
-      <p>form wip</p>
-      <form action="POST" id="add/remove" onsubmit="console.log('submitted');">
+      <form action="" id="add/remove" onsubmit="console.log('submitted');">
+        
         <div class="el-checkbox" id="remove-checkbox">
           <span class="margin-r">Add an item</span>
           <input type="checkbox" name="check_add" id="check_add">
@@ -104,7 +104,6 @@
 
     <!-- Settings image link, not sure how exactly this is going to be coded but this is temporary -->
     <a onclick="Settings()"><img src="resources/images/profile.png" alt="Settings" id="settingsLink"></a>
-
     <!-- This is where the icon stuff will go -->
     <div id="iconArea" onclick="off()">
       <div id="main" class = "container sort">
@@ -145,17 +144,12 @@
           <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/5/59/OneDrive_Folder_Icon.svg" alt="folder">
         </div>
         <div class="group1 group newline hide">
-          <div class="box" style="display:inline-block">
-          
           <a href="https://netflix.com">
             <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Netflix_icon.svg/407px-Netflix_icon.svg.png" alt="netflix">
           </a>
-        </div>
-        <div class="box" style="display:inline-block">
           <a href="https://hbo.com">
             <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/HBO_logo.svg/422px-HBO_logo.svg.png" alt="hbo">
           </a>
-        </div>
       </div>
 
         <div class="group1 newline hide"></div>
@@ -184,23 +178,17 @@
             <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/HBO_logo.svg/422px-HBO_logo.svg.png" alt="hbo">
           </a>
         </div>
-        <div id="group2" class="box 99 group-class">
-          <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/5/59/OneDrive_Folder_Icon.svg" alt="folder">
+        <div id="group2" class="box 99 group-class" onclick="group_click('group2')">
+          <span>test group 2</span>
           <span class="none"></span>
         </div>
         <div class="group2 group newline hide">
-          <div class="box" style="display:inline-block;">
-
-          
-            <a href="https://slack.com">
+            <a href="https://slack.com" class="10">
               <img class="icon" src="resources/images/slack.png" alt="slack">
             </a>
-          </div>
-          <div class="box">
-            <a href="https://discord.com">
-              <img class="icon" src="https://logos-world.net/wp-content/uploads/2020/12/Discord-Logo.png" alt="discord">
+            <a href="https://slack.com" class="10">
+              <img class="icon" src="resources/images/slack.png" alt="slack">
             </a>
-          </div>
         </div>
         <div class="group2 newline hide"></div>
         <div class="box 1">

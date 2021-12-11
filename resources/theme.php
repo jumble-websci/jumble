@@ -4,17 +4,10 @@ session_start();
 
 $dbhost = "localhost";
 $dbusername = "root";
-$dbpassword = "";
+$dbpassword = "wordpass";
 $dbname = "jumble";
 
-try {
-  $db = new PDO("mysql:host=$dbhost;dbname=$dbname","$dbusername","$dbpassword");
-} 
-catch (Exception $e) {
-  echo("Error: Failed to connect to database -> $e");
-  die();
-}
-
+$db = new PDO("mysql:host=$dbhost;dbname=$dbname","$dbusername","$dbpassword");
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
   $email = $_SESSION['email'];
@@ -22,8 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
   echo($themeNum);
   die();
 }
-
-echo("past");
 
 if (isset($_POST['num'])) {
   $email = $_SESSION['email'];
