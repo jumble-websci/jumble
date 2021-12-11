@@ -2,29 +2,29 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
 
 
-body{
+body {
 	margin: 0;
 	padding: 0;
 }
 
-#content{
+#content {
 	width: 100vw;
 	height: 100vh;
-  margin: 0;
-  padding: 0;
-  background-color: #FA8BFF;
+	margin: 0;
+	padding: 0;
+	background-color: #FA8BFF;
 	background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
 	background-size: cover;
 }
 
 #darken {
-  position: absolute;
-  top: calc(50% - 150px);
+	position: absolute;
+	top: calc(50% - 150px);
 	left: calc(50% - 300px);
-  width: 600px;
-  height: 300px;
-  border-radius: 20px;
-  background-color: rgba(0,0,0,0.25);
+	width: 600px;
+	height: 300px;
+	border-radius: 20px;
+	background-color: rgba(0, 0, 0, 0.25);
 }
 
 .error {
@@ -37,12 +37,12 @@ body{
 }
 
 #toggleButton {
-  position: absolute;
-  bottom: 1%;
-  left: 33%;
-  width: 34%;
-  color: #fff;
-  background: transparent;
+	position: absolute;
+	bottom: 1%;
+	left: 33%;
+	width: 34%;
+	color: #fff;
+	background: transparent;
 	border: none;
 	font-family: 'Exo', sans-serif;
 	font-size: 16px;
@@ -51,18 +51,18 @@ body{
 }
 
 #toggleButton:hover {
-  color: rgb(102, 204, 245);
-  cursor: pointer;
+	color: rgb(102, 204, 245);
+	cursor: pointer;
 }
 
-.header{
+.header {
 	position: absolute;
 	top: calc(50% - 35px);
 	left: calc(50% - 255px);
 	z-index: 2;
 }
 
-.header div{
+.header div {
 	float: left;
 	color: #fff;
 	font-family: 'Exo', sans-serif;
@@ -84,25 +84,25 @@ body{
 	z-index: 2;
 }
 
-.loginForm input[type=text]{
+.loginForm input[type=text] {
 	width: 250px;
 	height: 30px;
 	background: transparent;
-	border: 1px solid rgba(255,255,255,0.6);
+	border: 1px solid rgba(255, 255, 255, 0.6);
 	border-radius: 2px;
 	color: #fff;
 	font-family: 'Exo', sans-serif;
 	font-size: 16px;
 	font-weight: 400;
 	padding: 4px;
-  margin-top: 10px;
+	margin-top: 10px;
 }
 
-.loginForm input[type=password]{
+.loginForm input[type=password] {
 	width: 250px;
 	height: 30px;
 	background: transparent;
-	border: 1px solid rgba(255,255,255,0.6);
+	border: 1px solid rgba(255, 255, 255, 0.6);
 	border-radius: 2px;
 	color: #fff;
 	font-family: 'Exo', sans-serif;
@@ -113,11 +113,11 @@ body{
 }
 
 #showPass {
-  position: relative;
-  left: -9%;
+	position: relative;
+	left: -9%;
 }
 
-.loginForm input[type=submit]{
+.loginForm input[type=submit] {
 	width: 260px;
 	height: 35px;
 	background: #fff;
@@ -132,32 +132,32 @@ body{
 	margin-top: 10px;
 }
 
-.loginForm input[type=submit]:hover{
+.loginForm input[type=submit]:hover {
 	opacity: 0.8;
 }
 
-.loginForm input[type=submit]:active{
+.loginForm input[type=submit]:active {
 	opacity: 0.6;
 }
 
-.loginForm input[type=text]:focus{
+.loginForm input[type=text]:focus {
 	outline: none;
-	border: 1px solid rgba(255,255,255,0.9);
+	border: 1px solid rgba(255, 255, 255, 0.9);
 }
 
-.loginForm input[type=password]:focus{
+.loginForm input[type=password]:focus {
 	outline: none;
-	border: 1px solid rgba(255,255,255,0.9);
+	border: 1px solid rgba(255, 255, 255, 0.9);
 }
 
-.loginForm input[type=submit]:focus{
+.loginForm input[type=submit]:focus {
 	outline: none;
 }
 
-::-webkit-input-placeholder{
-   color: rgba(255,255,255,0.6);
+::-webkit-input-placeholder {
+	color: rgba(255, 255, 255, 0.6);
 }
 
-::-moz-input-placeholder{
-   color: rgba(255,255,255,0.6);
+::-moz-input-placeholder {
+	color: rgba(255, 255, 255, 0.6);
 }

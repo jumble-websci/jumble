@@ -47,7 +47,7 @@ function callLogin() {
     $.ajax({
       url: "resources/login.php",
       type: "GET",
-      data: { email: email, password: password},
+      data: { email: email, password: password },
       success: (data) => {
         if (data.substring(0, 5) == "Error") {
           showError(data);
@@ -81,11 +81,9 @@ function callLogin() {
 
 // Allow pressing enter to login/signup
 $(document).ready(() => {
-
   document.querySelector("#password").addEventListener("keyup", event => {
-    if (event.key !== "Enter") return; 
-    document.querySelector("#submitButton").click(); 
-    event.preventDefault(); 
+    if (event.key !== "Enter") return;
+    document.querySelector("#submitButton").click();
+    event.preventDefault();
   });
-
 });

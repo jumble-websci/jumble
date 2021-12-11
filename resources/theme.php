@@ -21,5 +21,4 @@ if (isset($_POST['num'])) {
   $num = $_POST['num'];
   $db->query("UPDATE `users` SET `theme` = '$num' WHERE `users`.`email` = '$email' ");
 }
-
 ?>
