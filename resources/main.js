@@ -155,7 +155,6 @@ function add_remove(data) {
             for (let element_index in add) {
               let element = add[element_index][0];
 
-
               if (element['name'] === "blank_space") {
                 out += '<span class="none 1"></span>';
               } else {
@@ -493,6 +492,7 @@ function getIcons() {
 
       // main page:
       let main_out = "";
+      group_num = 1;
       mainData.forEach(function (el) {
         let id = el[0];
         let element = arr_find_id(data_[1], id);
