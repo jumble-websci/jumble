@@ -618,7 +618,6 @@ function ready() {
 }
 let checked = false;
 function check_login() {
-  console.log("checking")
   return $.ajax({
     url: "resources/check.php",
     type: "GET",
