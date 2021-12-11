@@ -155,13 +155,15 @@ function add_remove(data) {
             for (let element_index in add) {
               let element = add[element_index][0];
 
-              out += '<a href="' + element['link'] + '" class="' + element['id'] + '">';
+
               if (element['name'] === "blank_space") {
                 out += '<span class="none 1"></span>';
               } else {
+                out += '<a href="' + element['link'] + '" class="' + element['id'] + '">';
                 out += '<img class="icon" src="' + element['path'] + '" alt="' + element['name'] + '">';
+                out += '</a>';
               }
-              out += '</a>';
+
 
             }
             out += "</div>";
@@ -175,9 +177,17 @@ function add_remove(data) {
         checked = $("#" + input).is(':checked')
 
         if (checked) {
+          let out = "";
           let last = $("#main:last")
           let element = arr_find_name(data_[1], input); {
-            last.append("<div class='box " + element['id'] + "'><a href='" + element['link'] + "'> <img class='icon' src='" + element['path'] + "' alt = '" + element['name'] + "'></a></div>");
+            if (element['name'] === "blank_space") {
+              out += '<span class="none 1"></span>';
+            } else {
+              out += '<a href="' + element['link'] + '" class="' + element['id'] + '">';
+              out += '<img class="icon" src="' + element['path'] + '" alt="' + element['name'] + '">';
+              out += '</a>';
+            }
+            last.append(out);
           }
         }
       }
