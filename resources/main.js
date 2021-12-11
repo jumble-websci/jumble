@@ -47,13 +47,25 @@ let group_num = 1;
 //For Settings
 
 
-  function Settings() {
-    const xmlhttp = new XMLHttpRequest();
-    xmlhttp.onload = function () {
+
+
+function Greeting(){
+  const xmlhttp = new XMLHttpRequest();
+  xmlhttp.onload = function() {
       document.getElementById("name").innerHTML = this.responseText;
     }
     xmlhttp.open("GET", "resources/greeting.php", true);
     xmlhttp.send();
+}
+
+
+
+function Settings() {
+  Greeting();
+  
+  document.getElementById("overlay").style.display = "block";
+   
+}
 
     document.getElementById("overlay").style.display = "block";
 
@@ -85,10 +97,16 @@ let group_num = 1;
   function hideform() {
     document.getElementById("info").style.display = "none";
   }
+  
+function hideform() {
+  document.getElementById("info").style.display = "none";
+  document.getElementById("update").style.visibility = "hidden";
+}
 
-  function showform() {
-    document.getElementById("info").style.display = "block";
-  }
+function showform() {
+  document.getElementById("info").style.display = "block";
+  document.getElementById("update").style.visibility = "visible";
+}
 
 
   function change() {
@@ -394,7 +412,6 @@ function logout() {
   });
 }
 
-
 function callUpdate() {
   let email = document.getElementById("email").value;
   let fname = document.getElementById("fname").value;
@@ -416,7 +433,7 @@ function callUpdate() {
       }
     });  
 
-    Settings();
+    Greeting();
 
   document.getElementById("email").value = "";
   document.getElementById("fname").value = "";
@@ -424,7 +441,6 @@ function callUpdate() {
   
 }
 
-let temp;
 function save() {
   let main = $("#main");
   let bot = $("#bottomBar .container");
@@ -441,13 +457,13 @@ function save() {
       let group_box = main.children()[i]
       let group_group = main.children()[i+1]
       let group_newline = main.children()[i+2]
-      temp = [group_box, group_group, group_newline]
+      // temp = [group_box, group_group, group_newline]
       let contents = []
       for (let i = 0; i < group_group.children['length']; i++) {
         contents.push(group_group.children[i].classList[0])
       }
       let group_arr = ['99', contents]
-      temp.push(group_arr)
+      // temp.push(group_arr)
 
       main_out.push(group_arr)
       i += 2
