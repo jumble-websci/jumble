@@ -14,4 +14,4 @@ Login or Create an account and then login to begin using.
 
 
 Note*:
-When opening up groups, apps appear underneath (at bottom)
+When opening up groups, apps appear under folder (at bottom)
