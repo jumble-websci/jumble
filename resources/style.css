@@ -1,6 +1,7 @@
 /* Fonts */
 
 @import url('https://fonts.googleapis.com/css2?family=Birthstone&family=Noto+Sans+Display:ital@0;1&display=swap');
+
 body {
   font-family: 'Noto Sans Display', sans-serif;
   margin: 0;
@@ -44,14 +45,16 @@ body {
 #iconArea {
   background-color: rgba(0, 0, 0, 0.1);
   /* margin: auto; */
-  left:5vw;
+  left: 5vw;
   margin-bottom: 10vh;
   width: 90vw;
   height: 70vh;
-  position:absolute;
-  overflow-y:scroll;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  position: absolute;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 #iconArea::-webkit-scrollbar {
@@ -81,9 +84,9 @@ body {
   border-top: 1px solid black;
   /* background-color: #2BD2FF;
   background-image: linear-gradient(90deg, #2BD2FF 7%, #FA8BFF 55%, #2BFF88 100%); */
-  z-index:3;
-  overflow-x:hidden;
-  overflow-y:hidden;
+  z-index: 3;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 /* For basic settings page */
@@ -92,12 +95,12 @@ body {
   font-family: 'Birthstone', cursive;
   margin-left: 32%;
   margin-top: 11vh;
-  position:fixed;
+  position: fixed;
   display: none;
   width: 34%;
   height: 87%;
   top: 0;
-  left:0;
+  left: 0;
   right: 0;
   bottom: 0;
   background-color: whitesmoke;
@@ -106,41 +109,37 @@ body {
   border-radius: 6px;
 }
 
-.field{
-  
-
+.field {
   margin-top: -2%;
   text-align: center;
   font-size: 50px;
-  color:black;
-  
+  color: black;
 }
 
 
-#info{
+#info {
   top: 9%;
   left: 46%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   position: relative;
   width: 55%;
-  }
+}
 
-.return{
-  background-color:#0b7dda;
+.return {
+  background-color: #0b7dda;
   position: absolute;
   top: 125%;
   left: 248%;
   font-size: 15px;
   color: black;
-  transform: translate(-50%,-50%);
-  
+  transform: translate(-50%, -50%);
 }
 
-.return:hover{
+.return:hover {
   background-color: red;
 }
 
-#update{
+#update {
   position: absolute;
   top: 89%;
   left: 50%;
@@ -149,33 +148,33 @@ body {
   width: 93px;
   color: bisque;
   background-color: orangered;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   border-radius: 40%;
-  border:none;
-  
+  border: none;
 }
 
-#update:hover{
-  background-color:#0b7dda;
-  color:black;
+#update:hover {
+  background-color: #0b7dda;
+  color: black;
   cursor: pointer;
   border: 2px solid black;
 }
 
 
-#sp{
+#sp {
   position: absolute;
   font-weight: bold;
-  border:none;
-  transform: translate(-50%,-50%);
-  top:95%;
+  border: none;
+  transform: translate(-50%, -50%);
+  top: 95%;
   left: 90%;
   text-decoration: none;
   color: rgb(59, 59, 59);
   font-size: 35px;
 }
-#sp:hover{
-  color:orangered;
+
+#sp:hover {
+  color: orangered;
 }
 
 .title2 {
@@ -194,18 +193,17 @@ body {
 /* Dropdown Button */
 .btn {
   cursor: pointer;
- background-color:black;
+  background-color: black;
   color: white;
   padding: 13px;
   font-size: 16px;
   border: none;
   outline: none;
-  border-radius:5px ;
-  
+  border-radius: 5px;
 }
 
-.about{
-  background-color:black;
+.about {
+  background-color: black;
   color: white;
   padding: 16px;
   font-size: 16px;
@@ -215,24 +213,23 @@ body {
   margin-left: 81.28vh;
 }
 
-.about:hover{
+.about:hover {
   background-color: #0b7dda;
 }
 
-
-#name{
-  position:relative;
-  top:-7%;
+#name {
+  position: relative;
+  top: -7%;
   left: -1%;
   text-align: center;
   font-size: 34px;
-  color:orangered;
+  color: orangered;
 }
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
-  left:39%;
-  top:-4%;
+  left: 39%;
+  top: -4%;
   align-content: center;
   position: relative;
   display: inline-block;
@@ -241,13 +238,12 @@ body {
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
   border: 4px solid black;
-  background-color:black;
+  background-color: black;
   display: none;
-  position:relative;
+  position: relative;
   width: 200%;
   left: -45%;
   box-shadow: rgba(240, 46, 170, 0.4) 0px 5px, rgba(240, 46, 170, 0.3) 0px 10px, rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px;
-  
 }
 
 .dropdown-content a:hover {
@@ -263,11 +259,7 @@ body {
   margin-bottom: 5px;
   transition: all 0.3s ease 0s;
   background-color: white;
-  
-  
 }
-
-
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
@@ -277,134 +269,121 @@ body {
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .btn:hover {
   background-color: #0b7dda;
-  
 }
 
-
-.value{
+.value {
   margin-bottom: 6px;
 }
 
-
-input{
+input {
   color: black;
   background-color: rgb(218, 218, 221);
-	border: none;
-	padding: 25px 20px;
-	width: 102%;
+  border: none;
+  padding: 25px 20px;
+  width: 102%;
   border-radius: 6px;
   display: block;
   transition: all 0.3s ease 0s;
-  }
-  
-
-input::placeholder{
- color:rgb(82, 79, 79);
- font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
- font-weight:bolder;
 }
 
-input:hover{
+input::placeholder {
+  color: rgb(82, 79, 79);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bolder;
+}
+
+input:hover {
   background-color: rgb(209, 207, 207);
   box-shadow: rgb(38, 57, 77) 0px 20px 20px -10px;
 }
 
 /*style the input boxes */
 input[type=text], select {
-  color:black;
-    margin: 3px 0;
-    display: inline-block;
-    border:none;
-    outline:none;
-  
+  color: black;
+  margin: 3px 0;
+  display: inline-block;
+  border: none;
+  outline: none;
 }
 
 input[type=text]:focus {
   background-color: rgb(198, 232, 243);
   border: 1px solid black;
-  
 }
-
 
 /* drag and drop */
-  
+
 .container {
-  display:grid;
-  gap:.75vw;
+  display: grid;
+  gap: .75vw;
   grid-template-columns: repeat(auto-fit, 8vw);
   grid-auto-columns: max-content;
-  
 }
+
 .box {
-  z-index:2;
+  z-index: 2;
   /* display:inline-block; */
   width: 8vw;
   height: 8vw;
-  cursor:move;
-  padding:10px;
+  cursor: move;
+  padding: 10px;
   margin: 1vw;
-  display:flex;
-  justify-content:center;
-  align-items :center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .box-small {
-  z-index:2;
+  z-index: 2;
   /* display:inline-block; */
   width: 6vw;
   height: 6vw;
-  cursor:move;
-  padding:10px;
-  padding-top:5px;
+  cursor: move;
+  padding: 10px;
+  padding-top: 5px;
   margin: 1vw;
-  margin-top:0px;
-  display:flex;
-  justify-content:center;
-  align-items :center;
+  margin-top: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .icon {
-  max-width:100%;
-  max-height:100%;
-  z-index:-1;
+  max-width: 100%;
+  max-height: 100%;
+  z-index: -1;
 }
 
 .none {
-  width:100%;
+  width: 100%;
 }
 
 
-.group{
-  width:88vw;
-  height:8vw;
+.group {
+  width: 88vw;
+  height: 8vw;
   grid-column-start: 1;
   margin-left: 1%;
 }
 
 .group-class {
-  box-sizing:border-box;
+  box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   border: 3px grey solid;
 }
-
 
 .newline {
   grid-column-start: 1;
 }
 
 .hide {
-  display:none;
+  display: none;
 }
-
-
-
 
 #addButtonImage {
   position: fixed;
   bottom: 14vh;
   width: 10vh;
-  right:1vw;
+  right: 1vw;
 }
-
-
