@@ -21,6 +21,7 @@ function toggleLogin() {
       $("#toggleButton").attr("value", "Don't have an account?");
       $("#submitButton").attr("value", "Login");
     }
+    $(".error").html('');
   }, 200);
 }
 
