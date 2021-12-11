@@ -2,12 +2,12 @@
 
 function add() {
     try {
-        $DATABASE_HOST = 'localhost';
-        $DATABASE_USER = 'root';
-        $DATABASE_PASS = '';
-        $DATABASE_NAME = 'jumble';
+        $dbhost = 'localhost';
+        $dbusername = 'root';
+        $dbpassword = 'wordpass';
+        $dbname = 'jumble';
 
-        $dbconn = new PDO("mysql:host=$DATABASE_HOST;dbname=$DATABASE_NAME", $DATABASE_USER, $DATABASE_PASS);
+        $dbconn = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbusername, $dbpassword);
 
         $stmt = $dbconn->prepare('SELECT * FROM icons');
         $stmt->execute();
