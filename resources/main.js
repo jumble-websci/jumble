@@ -528,7 +528,7 @@ function getIcons() {
         }
         else if (id === '99') {
           main_out += '<div id="group' + group_num + '" class="box 99 group-class" onclick="group_click(\'group'+ group_num +'\')">';
-          main_out += '<img class="icon" href="resources/images/folder.svg" alt="group">';
+          main_out += '<img class="icon" src="resources/images/folder.svg" alt="group">';
           main_out += "</div>";
 
           main_out += '<div class="group' + group_num + ' group newline hide" >';
