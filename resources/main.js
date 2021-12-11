@@ -148,7 +148,8 @@ function add_remove(data) {
             temp_arr = add;
             let out = "";
             out += "<div id='group" + group_num + "' class='box 99 group-class' onclick='group_click(\"group" + group_num + "\")'>";
-            out += "<span class='none'></span>";
+            // out += "<span class='none'></span>";
+            out += "<img class='icon' src='resources/images/folder.svg'>";
             out += "</div>";
 
             out += "<div class='group" + group_num + " group newline hide'>";
