@@ -382,7 +382,7 @@ input[type=text]:focus {
 }
 
 .group-class {
-  box-sizing:boder-box;
+  box-sizing:border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   border: 3px grey solid;
