@@ -45,7 +45,7 @@ function callLogin() {
   if ($("#submitButton")[0].value == "Login") {
     // Login ajax call
     $.ajax({
-      url: "resources/login.php",
+      url: "resources/php/login.php",
       type: "GET",
       data: { email: email, password: password },
       success: (data) => {
@@ -62,7 +62,7 @@ function callLogin() {
   } else {
     // Signup
     $.ajax({
-      url: "resources/signup.php",
+      url: "resources/php/signup.php",
       type: "POST",
       data: { email: email, password: password },
       success: (data) => {

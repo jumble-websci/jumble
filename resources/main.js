@@ -26,7 +26,7 @@ function changeTheme(themeNum) {
 
   // Save the theme
   $.ajax({
-    url: "resources/theme.php",
+    url: "resources/php/theme.php",
     type: "POST",
     data: { num: themeNum }
   });
@@ -47,7 +47,7 @@ function Greeting() {
   xmlhttp.onload = function () {
     document.getElementById("name").innerHTML = this.responseText;
   }
-  xmlhttp.open("GET", "resources/greeting.php", true);
+  xmlhttp.open("GET", "resources/php/greeting.php", true);
   xmlhttp.send();
 }
 
@@ -241,7 +241,7 @@ $(function () {
 let data_;
 function form_ajax(dat) {
   return $.ajax({
-    url: 'resources/add.php',
+    url: 'resources/php/add.php',
     type: 'post',
     data: dat,
     success: function (response) {
@@ -364,7 +364,7 @@ function showGroupMenu() {
 function logout() {
   // Logout ajax call
   $.ajax({
-    url: "resources/logout.php",
+    url: "resources/php/logout.php",
     type: "POST",
     success: () => {
       window.location = "login.html";
@@ -381,7 +381,7 @@ function callUpdate() {
   let lname = document.getElementById("lname").value;
   // Update
   $.ajax({
-    url: "resources/update.php",
+    url: "resources/php/update.php",
     type: "POST",
     data: { email: email, fname: fname, lname: lname },
     success: (data) => {
@@ -446,7 +446,7 @@ function save() {
   temp = toSave;
 
   $.ajax({
-    url: "resources/icons.php",
+    url: "resources/php/icons.php",
     type: "POST",
     data: { 'json': toSave },
     // success: (data) => {
@@ -462,7 +462,7 @@ let data1;
 
 function getIcons() {
   $.ajax({
-    url: "resources/icons.php",
+    url: "resources/php/icons.php",
     type: "POST",
     data: "getIcons",
     success: (data) => {
@@ -555,7 +555,7 @@ function ready() {
 
     // Get default theme
     $.ajax({
-      url: "resources/theme.php",
+      url: "resources/php/theme.php",
       type: "GET",
       success: (data) => {
         changeTheme((data ? data : 0));
@@ -572,7 +572,7 @@ function ready() {
 let checked = false;
 function check_login() {
   return $.ajax({
-    url: "resources/check.php",
+    url: "resources/php/check.php",
     type: "GET",
     success: (data) => {
       checked = data;
