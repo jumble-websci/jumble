@@ -22,6 +22,7 @@ if (isset($_POST['getIcons'])) {
     // $iconData = (($db->query("SELECT icons FROM users WHERE `email`='$email'"))->fetch())[0];
     echo(json_encode($iconData[0]['icons']));
     // die();
+
 }
 
 
@@ -33,6 +34,7 @@ if (isset($_POST['json'])) {
   // $db->query("UPDATE `users` SET `icons` = '$json' WHERE `users`.`email` = '$email' ");
   $stmt = $db->prepare("UPDATE `users` SET `icons` = '$json' WHERE `users`.`email` = '$email' ");
   $stmt->execute();
+//  echo $_POST['json'];
 //   echo "this worked";
   } catch (Exception $e) {
     echo '<p class="error">Error: ' . $e->getMessage() . '</p>';

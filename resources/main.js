@@ -442,11 +442,8 @@ function save() {
       let group_group = main.children()[i+1]
       let group_newline = main.children()[i+2]
       temp = [group_box, group_group, group_newline]
-
-      let id = group_box.attributes['id'].value
       let contents = []
       for (let i = 0; i < group_group.children['length']; i++) {
-
         contents.push(group_group.children[i].classList[0])
       }
       let group_arr = ['99', contents]
@@ -455,6 +452,7 @@ function save() {
       main_out.push(group_arr)
       i += 2
     } else {
+      // console.log(main.children()[i].classList[1])
       main_out.push([main.children()[i].classList[1]]);
     }
     i++;
@@ -465,8 +463,11 @@ function save() {
     bot_out.push(bot.children()[i].classList[0]);
     i+=1;
   }
+
   
   let toSave = JSON.stringify({"main": main_out, "bot": bot_out})
+
+  temp = toSave;
   
   $.ajax({
     url: "resources/icons.php",
@@ -481,15 +482,17 @@ function save() {
   });
 }
 
-let data1, data2;
+let data1;
 
-let bot_out = " ";
+
 function getIcons() {
   $.ajax({
     url: "resources/icons.php",
     type: "POST",
     data: "getIcons",
     success: (data) => {
+      // console.log(data)
+      data1 = data;
 
       let theData = JSON.parse(JSON.parse(data));
 
@@ -505,10 +508,12 @@ function getIcons() {
       let main_out = "";
       mainData.forEach( function(el) {
         let id = el[0];
+        // console.log(el)
         let element = arr_find_id(data_[1], id);
         if (id === '1') {
           main_out += '<div class="box 1"> <span class="none"></span></div>';
-        } else if (id === '99') {
+        }
+        else if (id === '99') {
           main_out += '<div id="group' + group_num + '" class="box 99 group-class" onclick="group_click(\'group'+ group_num +'\')">';
           main_out += '<span class="none"></span>';
           main_out += "</div>";
@@ -522,16 +527,18 @@ function getIcons() {
           }
           main_out += '</div>';
           main_out += '<div class="group' + group_num++ + ' newline hide"></div>';
-        } else {
+        }
+            else {
+              // element['id']
           main_out += "<div class='box " + element['id'] + "'><a href='" + element['link'] + "'> <img class='icon' src='" +  element ['path'] + "' alt = '" + element['name']+ "'></a></div>"
         }
-        
+      //
        });
       $("#main").html(main_out);
-      
+
 
       // bottom bar:
-
+      let bot_out = "";
       bottomBarData.forEach( function(el) {
         let element = arr_find_id(data_[1], el);
         if (el === '1') {
@@ -540,10 +547,11 @@ function getIcons() {
           bot_out += "<div class='box-small " + element['id'] + "'><a href='" + element['link'] + "'> <img class='icon' src='" +  element ['path'] + "' alt = '" + element['name']+ "'></a></div>"
         }
       });
-
       $("#bottomBar .container").html(bot_out);
 
       addSort();
+    }, error: () => {
+      alert("this isnt supposed to happen")
     }
   });
 }
