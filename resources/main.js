@@ -616,8 +616,25 @@ function ready() {
   }))
 
 }
+let checked = false;
+function check_login() {
+  console.log("checking")
+  return $.ajax({
+    url: "resources/check.php",
+    type: "GET",
+    success: (data) => {
+      checked = data;
+    }
+  });
+}
 $(document).ready(function() {
-  ready();
 
+  $.when(check_login()).done(function() {
+    if (checked === "true") {
+      ready();
+    } else {
+      window.location = "login.html"
+    }
+  });
 });
 

@@ -51,7 +51,7 @@ function callLogin() {
         if (data.substring(0, 5) == "Error") {
           showError(data);
         } else {
-          window.location = "main.php";
+          window.location = "main.html";
         }
       },
       error: () => {
