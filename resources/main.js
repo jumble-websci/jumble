@@ -13,7 +13,7 @@ function group_move(moved, replaced) {
 function collapse_groups() {
   $(".group").hide('fast');
 }
-let test;
+
 function changeTheme(themeNum) {
   // Change the theme
   $.getJSON("resources/themes.json", data => {
@@ -413,7 +413,7 @@ function callUpdate() {
   document.getElementById("lname").value = "";
 
 }
-
+let test = [];
 function save() {
   let main = $("#main");
   let bot = $("#bottomBar .container");
@@ -425,12 +425,14 @@ function save() {
   while (i < main.children()['length']) {
 
     if (main.children()[i].classList.contains("group-class")) {
+      test.push(main.children()[i])
       let group_group = main.children()[i + 1]
       let contents = []
       for (let i = 0; i < group_group.children['length']; i++) {
-        contents.push(group_group.children[i].classList[0])
+        contents.push(group_group.children[i].classList[1])
       }
       let group_arr = ['99', contents]
+      // test.push(contents)
 
       main_out.push(group_arr)
       i += 2
@@ -453,7 +455,7 @@ function save() {
 
   let toSave = JSON.stringify({ "main": main_out, "bot": bot_out })
 
-  temp = toSave;
+  // temp = toSave;
 
   $.ajax({
     url: "resources/php/icons.php",
