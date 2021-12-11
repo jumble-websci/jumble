@@ -413,7 +413,7 @@ function callUpdate() {
   document.getElementById("lname").value = "";
 
 }
-let test = [];
+let test;
 function save() {
   let main = $("#main");
   let bot = $("#bottomBar .container");
@@ -425,13 +425,16 @@ function save() {
   while (i < main.children()['length']) {
 
     if (main.children()[i].classList.contains("group-class")) {
-      test.push(main.children()[i])
+      // test.push(main.children()[i])
+
       let group_group = main.children()[i + 1]
+      test = group_group
       let contents = []
       for (let i = 0; i < group_group.children['length']; i++) {
-        contents.push(group_group.children[i].classList[1])
+        contents.push(group_group.children[i].classList[0])
       }
       let group_arr = ['99', contents]
+      // console.log(group_arr)
       // test.push(contents)
 
       main_out.push(group_arr)
