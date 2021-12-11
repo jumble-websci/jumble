@@ -12,3 +12,6 @@ Now you can run Jumble! Start up XAMPP and run your local version of jumble (loc
 
 Login or Create an account and then login to begin using.
 
+
+Note* 
+When opening groups, apps appear underneath (at bottom)
