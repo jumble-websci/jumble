@@ -64,10 +64,8 @@ function Settings() {
   Greeting();
   
   document.getElementById("overlay").style.display = "block";
-   
-}
 
-    document.getElementById("overlay").style.display = "block";
+  document.getElementById("overlay").style.display = "block";
 
   }
 
@@ -220,7 +218,6 @@ function add_remove(data) {
           $("#"+name).remove()
         } else {
           let element = arr_find_name(data_[1], input.slice(0, -7));
-          console.log(element)
           $(".box." + element['id']).remove();
         }
         check_remove();
@@ -468,7 +465,6 @@ function save() {
       main_out.push(group_arr)
       i += 2
     } else {
-      // console.log(main.children()[i].classList[1])
       main_out.push([main.children()[i].classList[1]]);
     }
     i++;
@@ -476,7 +472,12 @@ function save() {
 
   i = 0;
   while ( i <bot.children()['length']) {
-    bot_out.push(bot.children()[i].classList[0]);
+    if (bot.children()[i].classList[0] === "box-small") {
+      bot_out.push(bot.children()[i].classList[1]);
+    } else {
+      bot_out.push(bot.children()[i].classList[0]);
+    }
+    
     i+=1;
   }
 
@@ -507,7 +508,6 @@ function getIcons() {
     type: "POST",
     data: "getIcons",
     success: (data) => {
-      // console.log(data)
       data1 = data;
 
       let theData = JSON.parse(JSON.parse(data));
@@ -515,16 +515,14 @@ function getIcons() {
       if (Object.keys(theData).length === 0) {
         return;
       }
-
       let mainData = theData['main'];
       let bottomBarData = theData['bot'];
       data1 = theData;
-
+      
       // main page:
       let main_out = "";
       mainData.forEach( function(el) {
         let id = el[0];
-        // console.log(el)
         let element = arr_find_id(data_[1], id);
         if (id === '1') {
           main_out += '<div class="box 1"> <span class="none"></span></div>';
@@ -551,7 +549,6 @@ function getIcons() {
       //
        });
       $("#main").html(main_out);
-
 
       // bottom bar:
       let bot_out = "";
@@ -597,8 +594,9 @@ function addSort() {
 function ready() {
   $.when(form_ajax("add").done(function() {
 
-    change();
+    
     getIcons();
+    change();
 
     // Get default theme
     $.ajax({
